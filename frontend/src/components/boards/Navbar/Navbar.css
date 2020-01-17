@@ -1,0 +1,68 @@
+.board-logo {
+	opacity: .5;
+	cursor: pointer;
+	position: absolute;
+	left: 46%;
+}
+.board-logo:hover {
+	opacity: .8;
+	cursor: pointer;
+}
+div.card-search {
+	position: relative;
+	display: inline-block;
+}
+input.card-search {
+	background-color: hsla(0,0%,100%,.3);
+	border-radius: 3px;
+	border: none;
+	box-shadow: none;
+	box-sizing: border-box;
+	color: hsla(0,0%,100%,.5);
+	font-size: 13px;
+	height: 32px;
+	line-height: 19px;
+	margin: 0;
+	outline: none;
+	padding-left: 8px;
+	padding-right: 30px;
+	transition: width .15s;
+	width: 180px;
+	color: black;
+}
+.change {
+	padding-right: 54px !important;
+	width: 380px !important;
+	background-color: #fff !important;
+}
+input.card-search:focus {
+	padding-right: 54px !important;
+	width: 380px !important;
+	background-color: #fff !important;
+}
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+.search-icon {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	color: white;
+}
+.arrow-up {
+	transform: rotate(45deg);
+	position: absolute;
+	top: 8px;
+	right: 30px;
+	color: #42526e;
+}
+.times-icon {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+	color: #42526e;
+}
+Globtn:hover {
+	background-color: transparent;
+}

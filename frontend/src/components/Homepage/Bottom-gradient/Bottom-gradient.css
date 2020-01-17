@@ -1,0 +1,131 @@
+.bottom-gradient {
+	width: 100%;
+	background: linear-gradient(to bottom, #fff 0%, #f7ecff 46%, #d2ecff 74%, #fff 100%);
+}
+.bottom-gradient p {
+	font-size: 1.25rem;
+}
+.inner {
+	background: linear-gradient(180deg, #42548e 0%, #6b668c 100%);
+	border-radius: 12px;
+	padding: 3rem 1.5rem;
+}
+.text-white {
+	color: white;
+}
+.text-center {
+	text-align: center;
+}
+.logo-container {
+	margin-bottom: 1.5rem;
+}
+.logo-container img {
+	margin: 1em .5em;
+}
+h3 {
+	font-size: 2.1875rem;
+}
+a {
+	text-transform: none !important;
+	font-size: 1.4rem !important;
+	border-radius: 6px !important;
+	padding: .375rem .75rem !important;
+}
+.smarter-btn {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	color: black !important;
+	font-size: 1.25rem;
+}
+.pad-style {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+.padding {
+	padding-left: 3rem;
+	padding-right: 3rem;
+	padding-top: 1.5rem;	
+}
+.started-btn {
+	padding-right: 1rem;
+	padding-left: 1rem;
+	color: white !important;
+	font-size: 1.25rem;
+}
+.started-margin {
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+}
+.footer {
+	font-size: .8em;
+	margin: 4em 1em;
+	text-align: center;
+}
+.language-picker-container {
+	background-color: transparent;
+	display: inline-block;
+	margin: 0 0 1.25rem;
+	position: relative;
+}
+#language-picker {
+	background-color: rgba(255,255,255,0.5);
+	border: 2px solid #EDEFF0;
+	color: #959DA1;
+	padding: .5em;
+	-webkit-appearance: none;
+}
+.language-picker-container::after {
+	background-image: url('../../../trello-images/right.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 0;
+	box-sizing: content-box;
+	content: "";
+	height: 16px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 11px;
+	top: 50%;
+	transform: translateY(-50%) rotate(90deg);
+	width: 10px;
+}
+.global-footer-list {
+	list-style-type: none;
+	overflow: auto;
+	padding: 0;
+	margin: 0 0 1.25rem;
+}
+.footer ul li {
+	display: inline-block;
+	margin: 0 .4em;
+}
+.footer ul li a {
+	color: #8993A4 !important;
+	text-decoration: underline !important;
+	font-size: 1rem;
+}
+.atlassian-logo-small {
+	width: 150px;
+	height: auto;
+	display: block;
+	margin: 0 auto 17px;
+}
+.global-footer {
+	z-index: 1;
+}
+.global-footer-detail {
+	display: grid;
+}
+
+
+
+@media screen and (min-width: 768px) {
+	.get-started {
+		background-image: url('../../../trello-images/trellians-2x-2.png');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 1332px 393px;
+		height: 393px;
+	}
+}

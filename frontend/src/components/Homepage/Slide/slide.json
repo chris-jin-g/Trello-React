@@ -1,0 +1,39 @@
+{"data":[
+		{
+			"robotPositionX":400,
+			"robotPositionY":40,
+			"footerTitle":"Create a board for any project, give it a name, and invite your team.",
+			"rotateValue":20,
+			"text":" Create a board for any project, give it a name, and invite your team. "
+		},
+		{
+			"robotPositionX":790,
+			"robotPositionY":40,
+			"footerTitle":"Add lists to create steps in a workflow that is right for you.",
+			"rotateValue":20,
+			"text":" Add lists to create steps in a workflow that is right for you. "
+		},
+		{
+			"robotPositionX":790,
+			"robotPositionY":150,
+			"footerTitle":"Create cards for tasks to complete or information you want to organize.",
+			"rotateValue":0,
+			"text":" Create cards for tasks to complete or information you want to organize. "
+		},
+		{
+			"robotPositionX":790,
+			"robotPositionY":60,
+			"footerTitle":"Click on a card to add details, due dates, checklists, comments, and more.",
+			"rotateValue":0,
+			"text":" Click on a card to add details, due dates, checklists, comments, and more. "
+		},
+		{
+			"robotPositionX":700,
+			"robotPositionY":-25,
+			"footerTitle":"Move them across lists to show progress. Go from 'To Do' to 'Done' in no time!",
+			"rotateValue":0,
+			"text":" Move them across lists to show progress. Go from 'To Do' to 'Done' in no time! "
+		}
+	]
+}	
+	

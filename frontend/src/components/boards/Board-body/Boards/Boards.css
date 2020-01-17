@@ -1,0 +1,75 @@
+.Boards {
+	width: 100%;
+	margin-top: 40px;
+	padding-left: 64px;
+}
+.board-title-style {
+	display: flex;
+	align-items: center;
+}
+.board-area {
+	padding: 0 0 20px;
+}
+.board-area h3 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #172b4d;
+}
+.icon-style {
+	height: 32px;
+	font-size: 24px;
+	color: #42526e;
+	margin: 0 20px 0 5px;
+}
+.modal-opacity> :first-child {
+	background: transparent !important;
+	width: max-content;
+	box-shadow: none !important;
+}
+.create-btn {
+	position: absolute;
+	left: -6px;
+	bottom: 7px;
+	padding: 6px 12px !important;
+	cursor: not-allowed !important;
+	text-transform: none !important;
+}
+.start-with-a-template {
+	align-items: center !important;
+	color: #fff;
+	display: flex;
+	font-size: 14px !important;
+	line-height: 20px;
+	margin-top: -4px;
+	margin-left: 8px;
+	text-decoration: none;
+	margin-top: 2px;
+	margin-right: 7rem;
+}
+.md-icon {
+	height: 32px;
+	line-height: 32px;
+	width: 32px;
+	font-size: 20px;
+}
+.board-modal-footer {
+	position: relative;
+	padding: 0 !important;
+	border: none !important;
+}
+
+
+
+/*Media*/
+
+@media screen and (min-width: 710px) and (max-width: 1096px) {
+	.md-screen {
+		padding-left: 40px !important;
+	}
+}
+
+@media screen and (max-width: 710px) {
+	.sm-screen {
+		padding-left: 0 !important;
+	}
+}

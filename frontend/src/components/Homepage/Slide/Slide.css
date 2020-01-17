@@ -1,0 +1,389 @@
+.Slide {
+	width: 100%;
+}
+.Slide h3 {
+	font-size: 2.1875rem;
+}
+.Slide p {
+	letter-spacing: .6px;
+	font-size: 1.25rem;
+}
+.text-align {
+	text-align: center;
+}
+.slide-bar {
+	position: relative;
+}
+.slide-bar a:hover {
+	cursor: pointer;
+	background-color: #00C2E0;
+	color: white;
+}
+.arrow-left {
+	-webkit-box-align: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 50% !important;
+	box-shadow: 0 10px 20px 0 rgba(0,0,0,0.15);
+	height: 80px;
+	-webkit-box-pack: center;
+	justify-content: center;
+	line-height: 80px;
+	margin-top: -40px;
+	position: absolute;
+	top: 50%;
+	width: 80px;
+	z-index: 1;
+}
+.arrow-left img {
+	position: absolute;
+	top: 1.3rem;
+	right: 1.9rem;
+}
+.arrow-right img {
+	position: absolute;
+	top: 1.3rem;
+	left: 1.9rem;
+}
+.empty {
+	background-color: #CCDCE6 !important;
+}
+.arrow-right {
+	-webkit-box-align: center;
+	align-items: center;
+	background-color: white;
+	border-radius: 50% !important;
+	box-shadow: 0 10px 20px 0 rgba(0,0,0,0.15);
+	height: 80px;
+	-webkit-box-pack: center;
+	justify-content: center;
+	line-height: 80px;
+	margin-top: -40px;
+	position: absolute;
+	top: 50%;
+	width: 80px;
+	z-index: 1;
+}
+.board {
+	background-image: url(../../../trello-images/board-back.jpg);
+	height: 500px;
+	margin: 0 auto;
+	max-width: 880px;
+	cursor: pointer;
+	font-size: 1rem;
+	overflow: hidden;
+	padding: 18px;
+	position: relative;
+	text-align: left;
+	box-shadow: 0 10px 20px rgba(74,115,159,0.29);
+	background-size: cover;
+	background-position: center;
+	border-radius: 1rem;
+}
+.slide-header {
+	overflow: auto;
+	padding-bottom: 1rem;
+}
+.slide-title {
+	float: left;
+}
+.slide-title h3 {
+	font-size: 1.25rem;
+	letter-spacing: 1px;
+	margin: 0;
+	background: rgba(11,86,139,0.25);
+	border-radius: 6px;
+	color: white;
+	padding: 9px 15px;
+}
+.board-users {
+	float: left;
+	padding: 2px;
+	margin-left: 15px;
+}
+.user {
+	float: right;
+	margin-left: -5px;
+	height: 38px;
+	width: 38px;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.user-3 {
+	background-image: url('../../../trello-images/user-3.png');
+	position: absolute;
+	left: 269px;
+	top: 111px;
+}
+.user-1 {
+	background-image: url('../../../trello-images/user-1.png');
+}
+.user-2 {
+	background-image: url('../../../trello-images/user-2.png');
+}
+.lists {
+	min-width: 1000px;
+	overflow: auto;
+}
+.list {
+	float: left;
+	margin: 0 10px 5px 0;
+	width: 230px;
+}
+.list-add {
+	float: left;
+	margin: 0 10px 5px 0;
+	width: 230px;
+}
+.list-content {
+	padding: 8px;
+	background-color: #E5EFF5;
+	border-radius: 6px;
+}
+.list-content h5 {
+	font-size: 1rem;
+	letter-spacing: .5px;
+	margin: 0 0 8px 3px;
+}
+.card {
+	background-color: #CCDCE6;
+	border-radius: 4px;
+	font-size: .9rem;
+	margin-bottom: 8px;
+	min-height: 33px;
+	position: relative;
+	overflow: hidden;
+}
+.card-content {
+	background-color: #fff;
+	padding: 6px 8px;
+	min-height: 33px;
+}
+.add-card {
+	color: #aaa;
+	font-size: .9rem;
+	margin: 0 0 5px 5px;
+}
+.add-list {
+	background: rgba(11,86,139,0.25);
+	border-radius: 6px;
+	color: white;
+	padding: 9px 15px;
+}
+.card-back-overlay {
+	background-color: rgba(27,46,57,0.6);
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.card-back {
+	margin: 40px auto 0;
+	max-width: 570px;
+	padding: 20px;
+	background-color: #E5EFF5;
+	border-radius: 10px 10px 0 0;
+}
+.card-back h5 {
+	margin: 0 0 .65rem;
+	font-size: 1.5625rem;
+}
+.card-back h6 {
+	margin: 0 0 .25rem;
+	font-size: 1.25rem;
+}
+.card-back textarea {
+	border: 0;
+	border-radius: 10px;
+	width: 100%;
+	height: 80px;
+}
+.meta {
+	overflow: auto;
+	margin-bottom: 1rem;
+}
+.members {
+	float: left;
+}
+.members .user {
+	width: 32px;
+	height: 32px;
+	float: left;
+}
+.members .user+.user {
+	margin-left: 8px;
+}
+.due-date {
+	margin-left: 50px;
+	float: left;
+}
+.due-date img {
+	fill: white;
+float: left;
+height: 20px;
+margin: 2px 8px 0 0;
+width: 20px;
+}
+.due {
+	background-color: #61BD4F;
+	border-radius: 4px;
+	color: white;
+	float: left;
+	padding: 4px 8px;
+}
+.spacing-div {
+	letter-spacing: 1px;
+}
+.checklist {
+	font-style: italic;
+}
+
+.progress-div span {
+	display: inline-block;
+	vertical-align: baseline;
+}
+.progress-div span:first-child {
+	margin-right: 10px;
+}
+.progress-bar {
+	height: 10px;
+	width: 312px;
+	border-radius: 5px;
+	background-color: #00C2E0;
+}
+.checklist ul {
+	color: #6D8EA2;
+	font-style: italic;
+	list-style-type: none;
+	padding: 10px 0 10px 25px;
+}
+.checklist ul li {
+	position: relative;
+}
+.checklist img {
+	fill: #6D8EA2;
+	height: 14px;
+	left: -24px;
+	position: absolute;
+	top: 5px;
+	width: 14px;
+}
+.captions {
+	background-color: rgba(48,54,76,0.8);
+	bottom: 0;
+	color: white;
+	font-weight: bold;
+	left: 0;
+	padding: 15px;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+.captions nav a {
+	display: block;
+	float: left;
+	height: 30px;
+	overflow: hidden;
+	position: relative;
+	text-indent: 100%;
+	white-space: nowrap;
+	width: 30px;
+}
+.captions a:hover {
+	background: transparent;
+}
+.captions nav a::after {
+	background-color: #6D8EA2;
+	border-radius: 50%;
+	content: "";
+	height: 10px;
+	left: 50%;
+	margin: -5px 0 0 -5px;
+	position: absolute;
+	top: 50%;
+	transition: all .2s;
+	width: 10px;
+}
+.captions a::after:hover {
+	background-color: #00C2E0;
+}
+#robot {
+	background-image: url('../../../trello-images/robot.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	height: 188px;
+	position: absolute;
+	/*transition-timing-function: ease-out;*/
+	width: 179px;
+	z-index: 2;
+	transition: all .3s;
+	transform: rotate(20deg);
+	left: 400px;
+	top: 40px;
+}
+.in-motion {
+	overflow: visible;
+	position: absolute !important;
+	left: 481px;
+	top: 113px;
+	transform: rotate(-10deg);
+	width: 210px;
+	z-index: 1;
+	box-shadow: 0 2px 4px rgba(47,73,89,0.09);
+}
+.in-motion::before {
+	background: url('../../../trello-images/arrow-up.svg');
+	content: "";
+	height: 19px;
+	left: -100px;
+	position: absolute;
+	top: 13px;
+	width: 89px;
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+	.lg-left-block {
+		left: 0;
+	}
+	.lg-right-block {
+		right: 0;
+	}
+}
+@media screen and (min-width: 990px) and (max-width: 1200px) {
+	.md-left-block {
+		left: -15px;
+	}
+	.md-right-block {
+		right: -15px;
+	}
+}
+@media screen and (min-width: 768px) and (max-width: 990px) {
+	.sm-left-block {
+		left: -40px;
+	}
+	.sm-right-block {
+		right: -40px;
+	}
+	.robot-visibility {
+		display: none;
+	}
+	.to-do {
+		display: none !important;
+	}
+}
+@media screen and (max-width: 768px) {
+	.hidden-block {
+		display: none;
+	}
+	.robot-visibility {
+		display: none;
+	}
+	.to-do {
+		display: none !important;
+	}
+}

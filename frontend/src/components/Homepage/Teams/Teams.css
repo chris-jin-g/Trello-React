@@ -1,0 +1,240 @@
+.teams {
+	width: 100% !important;
+	padding-bottom: 3rem;
+}
+ul li {
+	font-size: 1.25rem;
+}
+.teams h4 {
+	margin-bottom: .5rem;
+	font-family: "Charlie Display",sans-serif !important;
+	font-weight: 500;
+	line-height: 1.2;
+	color: inherit;
+	font-size: 1.875rem;
+}
+.teams p {
+	letter-spacing: .6px;
+	font-size: 1.25rem;
+}
+.clipping-mask {
+	height: 377px;
+	overflow: hidden;
+	padding: 0 10px;
+}
+.phone {
+	border-radius: 32px;
+	background: linear-gradient(90deg, #c3e8ff, #fff);
+	box-shadow: 0 10px 20px
+	rgba(74,115,159,0.29);
+	margin: 0 auto;
+	position: relative;
+	width: 290px;
+	max-width: 100%;
+}
+.forehead {
+	opacity: .5;
+	position: relative;
+	height: 50px;
+}
+.forehead div {
+	background-color: #4985C2;
+	position: absolute;
+}
+.earpiece {
+	height: 8px;
+	border-radius: 4px;
+	width: 72px;
+	margin: -4px 0 0 -36px;
+	top: 50%;
+	left: 50%;
+}
+.earpiece::before {
+	background-color: #4985C2;
+	border-radius: 50%;
+	content: "";
+	height: 10px;
+	position: absolute;
+	width: 10px;
+	margin: -1px 0 0 -22px;
+}
+.earpiece::after {
+	background-color: #4985C2;
+	border-radius: 50%;
+	content: "";
+	height: 16px;
+	position: absolute;
+	width: 16px;
+	margin: -4px 0 0 -51px;
+}
+.buttons div {
+	background-color: #97BCE0;
+	border-radius: 4px 0 0 4px;
+	position: absolute;
+	width: 6px;
+}
+.silent {
+	height: 31px;
+	left: -6px;
+	top: 70px;
+}
+.volume {
+	height: 81px;
+	left: -6px;
+	top: 130px;
+}
+.lock {
+	border-radius: 0 4px 4px 0 !important;
+	height: 61px;
+	right: -6px;
+	top: 130px;
+}
+.screen {
+	overflow: hidden;
+	margin: 0 10px;
+}
+.board {
+	border-radius: 6px;
+	box-shadow: none;
+	margin: 0;
+	padding: 10px;
+	cursor: default;
+	font-size: 1rem;
+	overflow: hidden;
+	position: relative;
+	text-align: left;
+	user-select: none;
+	background: linear-gradient(#696cbf, #e2859f);
+}
+.header {
+	background-color: #3c4fa0 !important;
+	margin: -10px -10px 10px;
+	background: #3A80DE;
+	padding: 10px 0;
+	position: relative;
+	overflow: auto;
+}
+.title {
+	float: left;
+}
+.title h3 {
+	background-color: transparent;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	margin: 0;
+	border-radius: 6px;
+	color: white;
+	padding: 9px 15px;
+}
+.title h3::before {
+	content: "←";
+	margin-right: 10px;
+	box-sizing: border-box;
+}
+.title h3::after {
+	color: white;
+	content: "• • •";
+	font-size: 12px;
+	position: absolute;
+	right: 10px;
+	top: 18px;
+	box-sizing: border-box;
+}
+.lists {
+	min-width: 1000px;
+	overflow: auto;
+}
+.list {
+	margin-right: 15px;
+	width: 185px !important;
+	float: left;
+}
+.list-content {
+	background-color: #E5EFF5;
+	border-radius: 6px;
+	padding: 8px;	
+}
+.list-content h5 {
+	font-size: 1rem;
+	letter-spacing: .5px;
+	margin: 0 0 8px 3px;
+}
+.card {
+	background-color: #CCDCE6;
+	border-radius: 4px;
+	font-size: .9rem;
+	margin-bottom: 8px;
+	min-height: 33px;
+	position: relative;
+	overflow: hidden;
+}
+.card-content {
+	background-color: #fff;
+	padding: 6px 8px;
+	min-height: 33px;
+}
+.surfing-lessons {
+	background-position: center bottom;
+	background-image: url('../../../trello-images/card-surfing-lessons.jpg');
+}
+.image {
+	height: 70px;
+	background-size: cover;
+}
+.add-card {
+	color: #aaa;
+	font-size: .9rem;
+	margin: 0 0 5px 5px;
+}
+.tiki-drinks {
+	background-position: left center;
+	background-size: contain;
+	background-image: url('../../../trello-images/card-tiki-drinks.jpg');
+}
+.chin {
+	opacity: .5;
+	position: relative;
+	height: 55px;
+}
+.button {
+	height: 32px;
+	border-radius: 50%;
+	width: 32px;
+	margin: -16px 0 0 -16px;
+	top: 50%;
+	left: 50%;
+}
+.m-0 {
+	margin: 0 !important;
+	letter-spacing: .6px;
+}
+.team-info {
+	font-size: 2.1875rem !important;
+}
+.team-img {
+	width: 100%;
+	height: auto;
+}
+.padding-div {
+	padding-top: 1.5rem;
+}
+
+---------------------Media---------------------
+@media screen and (min-width: 768px) {
+	.lg-screen {
+		-webkit-order: 2;
+	}
+}
+@media screen and (max-width: 768px) {
+	.sm-screen {
+		text-align: center;
+		display: block;
+		padding-top: 1rem;
+	}
+	.sm {
+		-webkit-order: none;
+	}
+	.sm-mode {
+		padding-top: 3rem;
+	}
+}

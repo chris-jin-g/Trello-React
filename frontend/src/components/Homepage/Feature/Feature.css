@@ -1,0 +1,38 @@
+.feature {
+	width: 100%;
+}
+.feature-style {
+	text-align: center;
+	padding-bottom: 5rem;
+	padding-top: 5rem;
+}
+.feature h3 {
+	font-size: 2.1875rem;
+}
+.feature p {
+	letter-spacing: .5px;
+	font-size: 1.25rem;
+}
+.feature-btn {
+	color: #fff !important;
+	background-color: #6D8EA2 !important;
+	border-color: #6D8EA2 !important;
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+	font-size: 1.25rem !important;
+	text-transform: none !important;
+}
+p.small {
+	font-size: 1rem !important;
+	font-weight: 400;
+}
+p.app-store a img {
+	border-radius: .3em;
+box-shadow: 0 1px 0
+#a5acb0;
+display: inline;
+height: 44px;
+margin: 0;
+opacity: .8;
+width: auto;
+}

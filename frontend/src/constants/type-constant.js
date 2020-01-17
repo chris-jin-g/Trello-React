@@ -1,0 +1,11 @@
+export const LOG_IN = "LOG_IN";
+export const LOG_OUT = "LOG_OUT";
+export const LOG_IN_SUCCESS = "LOG_IN_SUCCESE";
+export const SIGN_UP = "SIGN_UP";
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const LOG_IN_FAILED = "LOG_IN_FAILED";
+export const GET_ERRORS = "GET_ERRORS";
+export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
+export const EMAIL_SAVE = "EMAIL_SAVE";
+export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
+export const CHANGE_STARRED = "CHANGE_STARRED";

@@ -1,0 +1,320 @@
+.login-body {
+	background-color: #F9FAFC;
+	font-family: "-apple-system",BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+	position: relative;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
+	font-size: 14px;
+}
+.login-body .logo {
+	display: block;
+	height: 43px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.inner-section {
+	width: 100%;
+	padding: 0px;
+	overflow: visible;
+	margin-bottom: 30px;
+}
+.inner-section p {
+	line-height: 1.333;
+	margin-top: 1rem;
+}
+.inner-section h1 {
+	text-align: center;
+	color: #5E6C84;
+	font-size: 16px;
+	letter-spacing: -0.01em;
+	line-height: 28px;
+	margin-top: 10px;
+	margin-bottom: 25px;
+	font-weight: bold;
+}
+.section-wrapper {
+	max-width: 400px;
+	margin: 0 auto;
+}
+.layout-twothirds-center {
+	display: block;
+	max-width: 585px;
+	margin: 0 auto;
+	position: relative;
+}
+.account-form {
+	background-color: #FFFFFF;
+	border-radius: 3px;
+	padding: 25px 40px;
+	box-shadow: rgba(0,0,0,0.1) 0 0 10px;
+}
+.hidden-div input {
+	display: block;
+	margin: 0 0 1.2em;
+	line-height: normal;
+	color: inherit;
+	font: inherit;
+}
+.hidden {
+	display: none !important;
+	visibility: hidden;
+}
+.account-form .error-message {
+	background: #eb5a46;
+	color: #fbedeb;
+	font-size: 14px;
+	display: inline-block;
+	border-radius: 4px;
+	border: 1px solid #EB5A46;
+	padding: .5em 1em;
+}
+.form-field {
+	font-size: 14px;
+	background-color: #FAFBFC;
+	border: 2px solid #DFE1E6;
+	box-sizing: border-box;
+	border-radius: 3px;
+	height: 44px;
+	transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
+	padding: .5em;
+	max-width: 400px;
+	width: 100%;
+	margin: 0 0 1.2em;
+}
+.account-button {
+	margin-bottom: 0;
+	width: 100%;
+}
+.button-green {
+	background: #5AAC44;
+	box-shadow: none;
+	border-radius: .3em;
+}
+.button {
+	padding: .6em 1.3em;
+	/*position: relative;*/
+	text-decoration: none;
+	border: 0px;
+	display: inline-block;
+	font-weight: bold;
+}
+.login-method-separator {
+	text-align: center;
+	font-size: 12px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.account-form .google-button {
+	background: #fff;
+	color: rgba(0,0,0,0.54);
+	box-shadow: rgba(0,0,0,0.2) 1px 1px 5px 0;
+	border-color: transparent;
+	text-align: center;
+	border-radius: 3px;
+	width: 99%;
+	height: 39px;
+	padding-top: 0;
+	margin-bottom: 0;
+	transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
+	border: 1px solid #4285F4;
+	white-space: nowrap;
+}
+span.icon {
+	background: url('../trello-images/google.svg') 0 50% no-repeat;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+border-radius: 1px;
+vertical-align: middle;
+}
+span.label {
+	font-size: 14px;
+	font-family: inherit;
+	font-weight: bold;
+	color: #505f79;
+	padding: 3px;
+	height: 32px;
+	line-height: 32px;
+	vertical-align: middle;
+}
+.quite {
+	color: hsl(0,0%,60%);
+}
+.inner-section hr {
+	margin-top: 25px;
+}
+.smaller-links {
+	font-size: 12px !important;
+	margin: 1rem 0;
+}
+.bottom-form-link {
+	text-align: center;
+	display: block;
+	padding: 0;
+	font-size: 14px;
+}
+.bottom-form-link li {
+	display: inline-block;
+	list-style: none;
+}
+.bottom-form-link li:not(:first-child)::before {
+	content: "\2022";
+	margin: 0 8px 0px 4px;
+}
+.global-footer {
+	font-size: 14px;
+	margin: 4em 1em;
+	text-align: center;
+}
+.language-picker-container {
+	background-color: transparent;
+	display: inline-block;
+	margin: 0 0 1.25rem;
+	position: relative;
+}
+#language-picker {
+	background-color: rgba(255,255,255,0.5);
+border: 2px solid #EDEFF0;
+color: #959DA1;
+padding: .5em;
+-webkit-appearance: none;
+}
+.language-picker-container::after {
+	background-image: url('../trello-images/right.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 0;
+	box-sizing: content-box;
+	content: "";
+	height: 16px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: 11px;
+	top: 50%;
+	transform: translateY(-50%) rotate(90deg);
+	width: 10px;
+}
+.global-footer .global-footer-list {
+	max-width: 45%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: .5rem;
+}
+.global-footer ul li {
+	display: inline-block;
+	margin: 0 .4em;
+}
+.global-footer ul li a {
+	color: #8993A4 !important;
+	text-decoration: none !important;
+}
+.global-footer hr {
+	max-width: 400px;
+	margin: 25px auto;
+}
+.atlassian-logo-small {
+	margin-bottom: 20px;
+	width: 150px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 1px;
+}
+.background {
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+.leftBk {
+	position: absolute;
+	width: 400px;
+	bottom: 0;
+	left: 0;
+	z-index: -999;
+	max-width: 30%;
+}
+.rightBk {
+	position: absolute;
+	width: 400px;
+	bottom: 0;
+	right: 0;
+	z-index: -999;
+	max-width: 30%;
+}
+
+/*------------------ Sign Up---------------------*/
+.signup-error-message {
+	background: #eb5a46;
+	color: #fbedeb;
+	font-size: 14px;
+	border-radius: 4px;
+	border: 1px solid #EB5A46;
+	padding: .5em 1em;
+	display: block;
+	margin-top: 1.2rem;
+	height: 44px;
+}
+.tos {
+	margin-top: 20px !important;
+	margin-bottom: 20px;
+	font-size: 12px;
+	line-height: 16px;
+}
+.quiet {
+	color: hsl(0,0%,60%);
+}
+.signup {
+	margin-bottom: 0;
+}
+#signup {
+	margin: 0;
+	cursor: pointer;
+	padding: 0;
+}
+#signup:disabled {
+	background: #E2E4E6;
+	color: hsl(0,0%,55%);
+	cursor: default;
+}
+#email-error:disabled {
+	background: #E2E4E6;
+	color: hsl(0,0%,55%);
+	cursor: default;
+}
+.info-message {
+	border-radius: 4px; 
+	background: #FAF3C0;
+	border: 1px solid #F2D600;
+	display: inline-block;
+	padding: .5em 1em;
+}
+.signup-username {
+	margin-top: 1.2rem;
+}
+.atlassian-link {
+	color: #298FCA;
+	font-size: 18px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 640px) {
+	.display-div {
+		display: none;
+	}
+	.sm-div {
+		max-width: none !important;
+	}
+}

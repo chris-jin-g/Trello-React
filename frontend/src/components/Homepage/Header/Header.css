@@ -1,0 +1,84 @@
+.Header {
+	background: linear-gradient(135deg, #0079bf, #5067c5);
+	width: 100%;
+}
+.Header h1 {
+	font-size: 3rem;
+}
+p.lead {
+	font-size: 1.5625rem;
+	font-weight: 300;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	letter-spacing: 0.6px;	
+}
+.header-content {
+	padding-top: 7rem !important;
+	padding-bottom: 5rem !important;
+	color: #fff;
+}
+.img-fluid {
+	max-width: 100%;
+	height: auto;
+}
+.Email-input {
+	font-size: 1.3rem;
+	min-width: 0;
+	width: 376px;
+	border-radius: .3rem;
+	line-height: 43px;
+	padding: 4px;
+	padding-left: 16px;
+	border-color: white;
+	border-style: solid;
+}
+.Sign-btn {
+	padding: .5rem 1.5rem;
+	font-size: 1.5625rem;
+	line-height: 1.5;
+	color: #fff;
+	background-color: #61BD4F;
+	border-color: #61BD4F;
+	font-weight: 400;
+	text-align: center;
+	border: 1px solid transparent;
+	border-radius: .3rem;
+	margin-left: 8px;
+}
+.Header-form {
+	padding: 16px 15px;
+	display: flex;
+}
+
+
+@media screen and (max-width: 990px) {
+	.md-screen {
+		-webkit-order: 1;
+		display: flex;
+	}
+	.order {
+		-webkit-order: 2;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.sm-screen {
+		display: flex !important;
+		margin: auto;
+	}
+	.sm-align {
+		text-align: center;
+	}
+	.sm-input {
+		width: auto;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.hide-input {
+		display: none;
+	}
+	.sm-margin {
+		margin: auto;
+	}
+}

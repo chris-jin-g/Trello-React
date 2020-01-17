@@ -1,0 +1,107 @@
+button:hover {
+	opacity: .8;
+}
+.Mdblink {
+	padding: 0 !important;
+}
+.board-title {
+	background-color: #97a0af;
+	background-size: cover;
+	background-position: 50%;
+	color: #fff !important;
+	line-height: 20px;
+	padding: 8px !important;
+	position: relative;
+	text-decoration: none;
+	border-radius: 3px !important;
+	display: block;
+	font-size: 16px !important;
+}
+.board-tile-details {
+	display: flex;
+	height: 80px;
+	position: relative;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.board-tile-details span {
+	font-weight: bold;
+}
+.hover {
+	overflow: hidden;
+	float: left;
+}
+
+
+.hover:hover {
+	opacity: .8;
+}
+.icon-hover:hover .icon-star {
+	animation-name: LeftStar;
+	animation-duration: .3s;
+	right: 0;
+}
+.icon-star {
+	display: contents;
+	position: absolute;
+	right: -35px;
+	bottom: 5px;
+}
+.icon-star:hover {
+	animation-duration: .3s;
+	animation-name: Zoomout;
+	transform: scale(1.2);
+}
+.mod-add {
+	text-align: center;
+}
+.mod-add span {
+	margin: auto;
+}
+
+
+
+/*Media*/ 
+
+@media screen and (min-width: 1091px) {
+	.lg-board {
+		width: 23.5%;
+		padding: 0;
+		margin: 0 2% 8px 0;
+		transform: translate(0);
+	}
+	.hover:nth-of-type(4n) {
+		margin-right: 0;
+	}
+}
+
+@media screen and (min-width: 712px) and (max-width: 1091px) {
+	.md-board {
+		width: 32%;
+		margin-right: 2%;
+		margin: 0 2% 8px 0;
+	}
+	.hover:nth-of-type(3n) {
+		margin-right: 0;
+	}
+}
+@media screen and (max-width: 712px) {
+	.sm-board {
+		width: calc(50% - 4px);
+		margin-right: 8px;
+		margin-bottom: 8px;
+	}
+	.hover:nth-of-type(2n) {
+		margin-right: 0;
+	}
+}
+
+@keyframes LeftStar {
+	0% {right: -35px;}
+	100% {right: 0}
+}
+
+@keyframes Zoomout {
+	0% {transform: scale(1);}
+	100% {transform: scale(1.2);}
+}

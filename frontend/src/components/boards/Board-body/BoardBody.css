@@ -1,0 +1,19 @@
+.BoardBody {
+	display: flex;
+	/*justify-content: center;*/
+	flex-direction: row;
+	align-items: flex-start;
+}
+.LeftBody {
+	width: 210px;
+	margin-top: 40px;
+	padding-left: 10px !important;
+}
+.li-items {
+	padding: unset !important;
+	border: none !important;
+}
+.li-items:hover {
+	background-color: rgba(9,30,66,.08);
+	border-radius: 6px !important;
+}

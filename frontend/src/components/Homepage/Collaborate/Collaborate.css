@@ -1,0 +1,176 @@
+.collaborate {
+	width: 100% !important;
+}
+.content {
+	padding-top: 3rem !important;
+}
+.borad {
+	background: linear-gradient(#3EB9DE, #3A80DE);
+	background-size: cover;
+	background-position: center;
+	border-radius: 1rem;
+	box-shadow: 0 10px 20px
+	rgba(74,115,159,0.29);
+	cursor: default;
+	font-size: 1rem;
+	margin-bottom: 30px;
+	overflow: hidden;
+	padding: 18px;
+	position: relative;
+	text-align: left;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+	font-size: 1rem;
+	text-align: left;
+}
+.colla-header {
+	overflow: auto;
+	padding-bottom: 1rem;
+	padding: 10px 0;
+	position: relative;
+	overflow: auto;
+	margin: -10px -10px 10px 0;
+}
+.colla-header h3 {
+	font-size: 1.25rem;
+	letter-spacing: 1px;
+	margin: 0;
+	background: rgba(11,86,139,0.25);
+	border-radius: 6px;
+	color: white;
+	padding: 9px 15px;
+	width: max-content;
+}
+.lists {
+	display: inline-flex;
+}
+.list {
+	float: left;
+	margin: 0 10px 5px 0;
+	width: 230px;
+	color: black;
+}
+.list:last-child {
+	margin-right: 0;
+}
+.list-content {
+	background-color: #E5EFF5;
+	border-radius: 6px;
+	padding: 8px;
+}
+.list-content h5 {
+	font-size: 1rem;
+	letter-spacing: .5px;
+	margin: 0 0 8px 3px;
+}
+.card {
+	background-color: #CCDCE6;
+	border-radius: 4px;
+	font-size: .9rem;
+	margin-bottom: 8px;
+	min-height: 33px;
+	position: relative;
+	overflow: hidden;
+	border: none;
+}
+.card-content {
+	background-color: #fff;
+	padding: 6px 8px;
+	min-height: 33px;
+}
+.card-users {
+	bottom: 7px;
+	position: absolute;
+	right: 7px;
+}
+.description {
+	margin-bottom: 14px;
+}
+.user {
+	height: 28px;
+	margin-left: 5px;
+	width: 28px;
+	float: left;
+}
+.user1 {
+	background-image: url('../../../trello-images/user-1.png');
+	background-size: contain;
+}
+.user2 {
+	background-image: url('../../../trello-images/user-2.png');
+	background-size: contain;
+}
+.user3 {
+	background-image: url('../../../trello-images/user-3.png');
+	background-size: contain;
+}
+.labels {
+	overflow: auto;
+	margin: 4px 0;
+}
+.label {
+	border-radius: 3.5px;
+	height: 7px;
+	margin-right: 5px;
+	width: 30px;
+}
+.label-blue {
+	background-color: #00C2E0;
+}
+.label-red {
+	background-color: #EB5A46;
+}
+.label-purple {
+	background-color: #C377E0;
+}
+.add-card {
+	color: #aaa;
+	font-size: .9rem;
+	margin: 0 0 5px 5px;
+}
+.left-content {
+	color: black;
+	-webkit-order: 1;
+}
+.left-content h3 {
+	font-size: 2.1875rem;
+}
+.left-content p {
+	letter-spacing: .6px;
+	font-size: 1.25rem;
+}
+.Start {
+	color: #fff !important;
+	background-color: #6D8EA2;
+	border-color: #6D8EA2;
+	display: inline-block;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	padding: 0.375rem 1rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	border-radius: 6px;
+	border: 1px solid transparent;
+}
+
+
+@media screen and (min-width: 768px) {
+	.lg-screen {
+		-webkit-order: 2;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.sm-screen {
+		-webkit-order: none;
+	}
+	.md-align {
+		text-align: center;
+	}
+}
