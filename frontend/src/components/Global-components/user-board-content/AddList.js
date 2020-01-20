@@ -3,7 +3,7 @@ import { MDBIcon } from 'mdbreact';
 
 
 // Import css for it
-import './GloCss.css';
+import '../GloCss.css';
 
 export default class AddList extends Component {
 	render() {

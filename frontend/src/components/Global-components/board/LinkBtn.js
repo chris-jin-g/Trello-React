@@ -3,7 +3,7 @@ import { MDBIcon } from 'mdbreact';
 import { Link } from 'react-router-dom';
 
 // Import css for it
-import './GloCss.css';
+import '../GloCss.css';
 
 const LinkBtn = ({ fab, to, icon, value, bold, fontsize, color, bkColor}) => {
 	

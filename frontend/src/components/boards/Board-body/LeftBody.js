@@ -3,8 +3,8 @@ import { MDBListGroup, MDBListGroupItem } from "mdbreact";
 
 
 // Import components for it
-import LinkBtn from '../../Global-components/LinkBtn';
-import Globtn from '../../Global-components/Globtn';
+import LinkBtn from '../../Global-components/board/LinkBtn';
+import Globtn from '../../Global-components/board/Globtn';
 import './BoardBody.css';
 import Template_root from './template_root.json';
 

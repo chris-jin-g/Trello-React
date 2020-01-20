@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Import css for it
-import './GloCss.css';
+import '../GloCss.css';
 
 const CreateArea = ({title, onClick}) => {
 	return (

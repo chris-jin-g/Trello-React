@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBIcon } from 'mdbreact';
 
-import './GloCss.css'
+import '../GloCss.css'
 
 const Globtn = ({ toggle, bkcolor, color, type, iconsize, size, fab, value, borderRadius, spanLeft}) => {
 	const styles = {

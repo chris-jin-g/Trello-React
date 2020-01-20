@@ -7,8 +7,8 @@ import { bindActionCreators } from 'redux';
 
 // Import css and components for it
 import './Boards.css';
-import BoardArea from '../../../Global-components/boardArea';
-import CreateArea from '../../../Global-components/CreateArea';
+import BoardArea from '../../../Global-components/board/boardArea';
+import CreateArea from '../../../Global-components/board/CreateArea';
 
 
 class Boards extends Component {
@@ -212,16 +212,21 @@ class Boards extends Component {
 				{/*Modal*/}
 				<MDBModal className="modal-opacity" isOpen={this.state.modal} toggle={this.toggle}>
 				    <div className="create-board-modal-header">
+						
+						{/*board title*/}
 						<div className="create-board-title">
+							
 							<button onClick={this.toggle} className="close-btn">
 								<MDBIcon icon="times" />
 							</button>
+							
 							<input
 							value={this.state.value}
 							onChange={this.onChange}
 							type="text"
 							placeholder="Add board title"
 							/>
+							
 							<div>
 								<button className="select-btn">
 									<span>No team</span>
@@ -233,46 +238,37 @@ class Boards extends Component {
 									<MDBIcon className="icon-sm" icon="angle-down" />
 								</button>
 							</div>
-						</div>	
+						</div>
+						
+						{/*Background themes*/}
 						<ul className="theme-area">
+							{
+								theme[1].slice(0, 4).map((theme, i) => {
+									return (
+										<li className="background-grid-item">
+											<button className="theme-btn" style={{background: `url(${theme.url})`}}>
+												<MDBIcon className="check-icon" icon="check" />
+											</button>
+										</li>
+									)
+								})
+							}
+							{
+								theme[0].slice(0, 4).map((theme, i) => {
+									return (
+										<li className="background-grid-item">
+											<button className="theme-btn" style={{background: `${theme.color}`}}>
+												<MDBIcon className="check-icon" icon="check" />
+											</button>
+										</li>
+									)
+								})
+							}
+							
+							{/*More themes*/}
 							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
-								</button>
-							</li>
-							<li className="background-grid-item">
-								<button className="theme-btn">
-									<MDBIcon className="check-icon" icon="check" />
+								<button className="theme-btn" style={{background: 'white'}}>
+									<MDBIcon className="more-icon" icon="ellipsis-h" />
 								</button>
 							</li>
 						</ul>
@@ -289,7 +285,7 @@ class Boards extends Component {
 					    	</button>
 					    }
 					    	
-				    	<MDBNavLink to="/board/Templates" className="start-with-a-template">
+				    	<MDBNavLink onClick={this.toggle} to="/board/Templates" className="start-with-a-template">
 				    		<MDBIcon className="md-icon" fab icon="trello" />
 				    		<span>Start-with-a-Template</span>
 				    	</MDBNavLink>

@@ -42,29 +42,41 @@ router.route('/login').post((req, res) =>{
 						.then(boarddata => {
 							// User matched
 					        // Create JWT Payload
+					        if (!boarddata) {
+					        	return res.status(400).json("err")
+					        }
 
-					        console.log(boarddata)
-					        const payload = {
+					        const newboardData = {
 					          id: boarddata[0].userid,
 					          name: boarddata[0].username,
 					          boards: boarddata[0].boards,
 					          certification: userdata[0].certification
 					        };
 
-					        // Sign token
-					        jwt.sign(
-					          payload,
-					          process.env.secretKey,
-					          {
-					            expiresIn: 31556926 // 1 year in seconds
-					          },
-					          (err, token) => {
-					            res.json({
-					              success: true,
-					              token: "Bearer " + token
-					            });
-					          }
-					        );
+					        db.userboardcollection.find({userId: boarddata[0].userid})
+					        	.then(boardCollection => {
+					        		const payload = {
+					        			boarddata: newboardData,
+					        			boardCollection: boardCollection[0]
+					        		}
+
+					        		console.log(payload)
+					        		// Sign token
+							        jwt.sign(
+							          payload,
+							          process.env.secretKey,
+							          {
+							            expiresIn: 31556926 // 1 year in seconds
+							          },
+							          (err, token) => {
+							            res.json({
+							              success: true,
+							              token: "Bearer " + token
+							            });
+							          }
+							        );
+							    })
+					        
 						}) 
 			      } else {
 			        return res

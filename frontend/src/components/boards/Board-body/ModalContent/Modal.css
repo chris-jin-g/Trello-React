@@ -113,10 +113,10 @@
 	margin-bottom: 6px;
 }
 .theme-btn {
-	background: url('../../../../trello-images/trello-theme-img/theme2.jpg');
+	/*background: url('../../../../trello-images/trello-theme-img/theme2.jpg');*/
 	background-color: #fff;
-	background-position: 50%;
-	background-size: cover;
+	background-position: 50% !important;
+	background-size: cover !important;
 	box-shadow: none;
 	width: inherit;
 	border: none;
@@ -131,6 +131,17 @@
 	bottom: 2px;
 	left: -5px;
 	color: white;
+	font-size: 12px;
+}
+.more-icon {
+	position: relative;
+	font-size: 16px;
+}
+.more-icon::before {
+	position: absolute;
+	bottom: 2px;
+	left: -5px;
+	color: grey;
 	font-size: 12px;
 }
 

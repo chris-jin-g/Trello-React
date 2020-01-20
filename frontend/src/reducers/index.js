@@ -9,12 +9,14 @@ import errors from './error.reducer';
 import email from './email.reducer';
 import starred from './starred.reducer';
 import theme from './theme.reducer';
+import addlist from './addlist.reducer';
+import compareBoardId from './saveBoardId.reducer';  
 
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['user', 'theme']
+	whitelist: ['user', 'theme', 'compareBoardId']
 }
 
 
@@ -23,7 +25,9 @@ const rootReducer = combineReducers({
 	errors,
 	email,
 	starred,
-	theme
+	theme,
+	addlist,
+	compareBoardId
 });
 
 export default persistReducer(persistConfig, rootReducer);

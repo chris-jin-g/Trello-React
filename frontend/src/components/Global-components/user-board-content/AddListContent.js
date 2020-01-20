@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { MDBIcon, MDBBtn } from 'mdbreact';
-import 	{ addList, closeList } from '../../actions/user.action';
+import 	{ addList, closeList } from '../../../actions/user.action';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 
 // Import css for it
-import './GloCss.css';
+import '../GloCss.css';
 
 class AddList extends Component {
 	constructor(props) {
@@ -18,22 +18,41 @@ class AddList extends Component {
 
 		this.state = {
 			title: '',
-			showStatus: true
+			showStatus: false,
+			boardid: ''
 		}
 	}
 
-	addList() {
+	componentWillMount() {
+		console.log("WillReceive")
+		console.log(this.props.boardid)
+		this.setState({
+			showStatus: this.props.showFlag,
+			boardid: this.props.boardid
+		});
+	}
+
+	addList(e) {
 		const data = {
 			title: this.state.title,
-			showStatus: !this.state.showStatus
+			showStatus: !this.state.showStatus,
+			boardid: this.state.boardid
+		}
+
+		if (e.key == 'Enter') {
+			if (data.title !== '') {
+				this.props.addList(data);
+			} else {
+				alert("input title!")
+			}
 		}
 
 		if (data.title !== '') {
-			this.props.addList(data);
-		} else {
-			alert("input title!")
-			this.Close();
-		}
+				this.props.addList(data);
+			} else {
+				alert("input title!")
+			}
+			
 	}
 
 	Close() {
@@ -53,7 +72,7 @@ class AddList extends Component {
 
 	render() {
 		return (
-			<div className="add-list-content">
+			<div onKeyPress={this.addList} className="add-list-content">
 				<input
 				className="title-input"
 				value={this.state.title}

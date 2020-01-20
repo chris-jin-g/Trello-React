@@ -25,10 +25,11 @@ export function* doLoginUser(action) {
 		setAuthToken(token);
 		// Decode token to get user data
 		const decoded = jwt_decode(token);
+		
 		yield put(userAction.setCurrentUser(decoded));
 
 		// Return dashboard or checkpage
-		if (decoded.certification == "1") {
+		if (decoded.boarddata.certification == "1") {
 			action.payload.history.push('/board');
 		} else {
 			action.payload.history.push('/checkTrelloPage');

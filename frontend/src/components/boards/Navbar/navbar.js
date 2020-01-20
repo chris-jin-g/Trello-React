@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {  MDBNavbar, MDBNavItem, MDBNavLink, MDBIcon, MDBNavbarNav, MDBCollapse, MDBBtn } from 'mdbreact';
 
 // Import components for it
-import Globtn from '../../Global-components/Globtn';
+import Globtn from '../../Global-components/board/Globtn';
 import BoardModal from '../Board-body/ModalContent/BoardModal';
 
 // Import imgs and css for it
@@ -23,20 +23,18 @@ export default class Navbar extends Component {
 		}
 	}
 
-	// componentDidMount() {
-	// 	document.addEventListener("click", () => {
-	// 		const regex = /change/g;
-	// 		const searchId = document.getElementById('card-search');
-	// 		if (regex.test(searchId.getAttribute('class'))) {
-	// 			searchId.classList.remove('change');
-	// 			document.getElementById('search-icon').classList.remove('hidden');
-	// 			document.getElementById('times-icon').classList.add('hidden');
-	// 			document.getElementById('arrow-up').classList.add('hidden');
-	// 		}
-
-			
-	// 	});
-	// }
+	componentWillMount() {
+		document.addEventListener("click", () => {
+			const regex = /change/;
+			const searchId = document.getElementById('card-search');
+			if (regex.test(searchId.getAttribute('class'))) {
+				searchId.classList.remove('change');
+				document.getElementById('search-icon').classList.remove('hidden');
+				document.getElementById('times-icon').classList.add('hidden');
+				document.getElementById('arrow-up').classList.add('hidden');
+			}
+		});
+	}
 
 	cardSearch() {
 		document.getElementById('card-search').classList.add("change");
@@ -67,10 +65,10 @@ export default class Navbar extends Component {
 			<>
 				<MDBNavbar style={{backgroundColor: this.props.bk}}>
 					<MDBNavbarNav left style={{display: "contents"}}>
-						<Globtn bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="home" size="32" iconsize="16px" borderRadius="3"  />
+						<Globtn toggle={this.returnBoard} bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="home" size="32" iconsize="16px" borderRadius="3"  />
 						<Globtn toggle={this.toggle} value="Boards" bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={true} type="trello" size="32" iconsize="16px" borderRadius="3" spanLeft="9px" />
 						
-						<div className="card-search">
+						<div className="card-search" style={{zIndex: 10}}>
 							<input onClick={this.cardSearch} id="card-search" type="text" className="card-search" />
 							<MDBIcon id="search-icon" className="search-icon" icon="search" />
 							<MDBIcon onClick={this.CloseSearch} id="times-icon" className="hidden times-icon" icon="times" />

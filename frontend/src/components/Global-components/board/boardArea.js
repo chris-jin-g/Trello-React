@@ -2,17 +2,17 @@ import React, { Component, useState } from 'react';
 import { MDBIcon, MDBLink } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeStarred } from '../../actions/user.action';
+import { changeStarred, saveCompareId } from '../../../actions/user.action';
 
 // Import css for it
-import './GloCss.css';
+import '../GloCss.css';
 
 class BoardArea extends Component {
 	constructor(props) {
 		super();
 
 		this.changeStar = this.changeStar.bind(this);
-		// this.toMainBoard = this.toMainBoard.bind(this);
+		this.toMainBoard = this.toMainBoard.bind(this);
 
 		this.state = {
 			clicked: false,
@@ -106,10 +106,16 @@ class BoardArea extends Component {
 		}
 	}
 
-	// toMainBoard() {
-	// 	let urlId = parseInt(this.state.boardid) + 1;
-	// 	window.location = '/b/'+urlId;
-	// }
+	toMainBoard() {
+		let urlId = this.state.url;
+		const data = {
+			boardid: this.state.boardid
+		}
+		// save boardid as CompareId
+		this.props.saveCompareId(data);
+
+		window.location = '/b/' + urlId;
+	}
 
 	render() {
 		const regex = /^http/g;
@@ -126,14 +132,14 @@ class BoardArea extends Component {
 					(regex.test(this.state.bk))?
 						(this.state.hover == true)?
 							<a className="board-title icon-hover" style={{backgroundImage: `url(${this.state.bk})`}}>
-								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+								<MDBLink onClick={this.toMainBoard} className="board-tile-details is-badged">
 									<span>{this.props.title}</span>
 									
 								</MDBLink>
 								<MDBIcon onClick={this.changeStar} style={iconStyle} className="icon-star" icon="star" />
 							</a>:
 							<a className="board-title" style={{backgroundImage: `url(${this.state.bk})`}}>
-								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+								<MDBLink onClick={this.toMainBoard} className="board-tile-details is-badged">
 									<span>{this.props.title}</span>
 									
 								</MDBLink>
@@ -142,14 +148,14 @@ class BoardArea extends Component {
 					:
 						(this.state.hover == true)?
 							<a className="board-title icon-hover" style={{backgroundColor: `${this.state.bk}`}}>
-								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+								<MDBLink onClick={this.toMainBoard} className="board-tile-details is-badged">
 									<span>{this.props.title}</span>
 									
 								</MDBLink>
 								<MDBIcon onClick={this.changeStar} style={iconStyle} className="icon-star" icon="star" />
 							</a>:
 							<a className="board-title" style={{backgroundColor: `${this.state.bk}`}}>
-								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+								<MDBLink onClick={this.toMainBoard} className="board-tile-details is-badged">
 									<span>{this.props.title}</span>
 									
 								</MDBLink>
@@ -164,7 +170,8 @@ class BoardArea extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    changeStarred
+    changeStarred,
+    saveCompareId
   }, dispatch);
 }
 

@@ -80,4 +80,11 @@ export function closeList(showFlag) {
 		type: types.CLOSE_LIST,
 		payload: showFlag
 	}
-} 
+}
+
+export function saveCompareId(id) {
+	return {
+		type: types.SAVE_ID,
+		payload: id
+	}
+}
