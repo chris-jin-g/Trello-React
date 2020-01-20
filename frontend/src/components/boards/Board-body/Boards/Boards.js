@@ -9,7 +9,6 @@ import { bindActionCreators } from 'redux';
 import './Boards.css';
 import BoardArea from '../../../Global-components/boardArea';
 import CreateArea from '../../../Global-components/CreateArea';
-import ModalContent from '../ModalContent/ModalContent';
 
 
 class Boards extends Component {
@@ -17,13 +16,17 @@ class Boards extends Component {
 		super(props);
 
 		this.toggle = this.toggle.bind(this);
+		this.onChange = this.onChange.bind(this);
 
 		global.i = 0;
 		this.state = {
 			modal: false,
 			boards: {},
 			starred: false,
-			starredBoard: {}
+			starredBoard: {},
+			value: '',
+			visible: false,
+			theme: {}
 		}
 	}
 
@@ -46,7 +49,8 @@ class Boards extends Component {
 		this.setState({
 			boards: boards,
 			id: this.props.user.user.id,
-			starredBoard: starredBoard
+			starredBoard: starredBoard,
+			theme: this.props.theme.themeData
 		});
 	}
 
@@ -83,8 +87,24 @@ class Boards extends Component {
 		});
 	}
 
+	onChange(e) {
+		this.setState({
+			value: e.target.value
+		})
+		if (e.target.value !== '') {
+			this.setState({
+				visible: true
+			})
+		} else {
+			this.setState({
+				visible: false
+			});
+		}
+	}
+
 	render() {
-		const { starredBoard, boards } = this.state;
+		const { starredBoard, boards, theme } = this.state;
+		const regex = /bk/;
 		return (
 			<>
 				{/*Board*/}
@@ -100,7 +120,19 @@ class Boards extends Component {
 							<div style={{display: "flex", flexWrap: "wrap"}}>
 								{
 									starredBoard.map((value, i) => {
-										return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk='/static/media/board.ddecc2ed.jpg' />
+										if (regex.test(value.themeTitle)) {
+											return theme[1].map(data => {
+												if (value.themeTitle.substring(2) == data.no) {
+													return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk={data.url} />
+												}
+											})
+										} else {
+											return theme[0].map(data => {
+												if (value.themeTitle.substring(2) == data.no) {
+													return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk={data.color} />
+												}
+											})
+										}
 									})
 								}
 							</div>
@@ -119,7 +151,19 @@ class Boards extends Component {
 									{
 										boards.map((value, i) => {
 											if (!value.starred) {
-												return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk='/static/media/board.ddecc2ed.jpg' />
+												if (regex.test(value.themeTitle)) {
+													return theme[1].map(data => {
+														if (value.themeTitle.substring(2) == data.no) {
+															return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk={data.url} />
+														}
+													})
+												} else {
+													return theme[0].map(data => {
+														if (value.themeTitle.substring(2) == data.no) {
+															return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk={data.color} />
+														}
+													})
+												}
 											}
 										})
 									}
@@ -135,7 +179,19 @@ class Boards extends Component {
 						<div style={{display: "flex", flexWrap: "wrap"}}>
 							{
 								boards.map((value, i) => {
-									return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk='/static/media/board.ddecc2ed.jpg' />
+									if(regex.test(value.themeTitle)) {
+										return theme[1].map(data => {
+											if (value.themeTitle.substring(2) == data.no) {
+												return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk={data.url} />
+											}
+										})
+									} else {
+										return theme[0].map(data => {
+											if (value.themeTitle.substring(2) == data.no) {
+												return <BoardArea starred={value.starred} title={value.title} clicked={value.starred} boardid={value.boardid} bk={data.color} />
+											}
+										})
+									}
 								})
 							}
 							<CreateArea onClick={this.toggle} title="Create new board"  />
@@ -147,7 +203,7 @@ class Boards extends Component {
 							<h3>Teams</h3>
 						</div>
 						<div style={{display: "flex", flexWrap: "wrap"}}>
-							<BoardArea title="First board" bk='/static/media/board.ddecc2ed.jpg' />
+							<BoardArea title="First board" bk='https://images.unsplash.com/photo-1573513499072-30ade1d4ed09?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjcwNjZ9' />
 							<CreateArea onClick={this.toggle} title="Create new board"  />
 						</div>
 					</div>
@@ -155,11 +211,84 @@ class Boards extends Component {
 
 				{/*Modal*/}
 				<MDBModal className="modal-opacity" isOpen={this.state.modal} toggle={this.toggle}>
-				    <ModalContent toggle={this.toggle} />
+				    <div className="create-board-modal-header">
+						<div className="create-board-title">
+							<button onClick={this.toggle} className="close-btn">
+								<MDBIcon icon="times" />
+							</button>
+							<input
+							value={this.state.value}
+							onChange={this.onChange}
+							type="text"
+							placeholder="Add board title"
+							/>
+							<div>
+								<button className="select-btn">
+									<span>No team</span>
+									<MDBIcon className="icon-sm" icon="angle-down" />
+								</button>
+								<button className="select-btn">
+									<MDBIcon className="icon-sm" icon="lock" />
+									<span>Private</span>
+									<MDBIcon className="icon-sm" icon="angle-down" />
+								</button>
+							</div>
+						</div>	
+						<ul className="theme-area">
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+							<li className="background-grid-item">
+								<button className="theme-btn">
+									<MDBIcon className="check-icon" icon="check" />
+								</button>
+							</li>
+						</ul>
+				</div>
 				    <MDBModalFooter className="board-modal-footer">
-				    	<MDBBtn className="create-btn" color="light">
-				    		<span>Create Board</span>
-				    	</MDBBtn>
+					    {
+					    	this.state.visible?
+					    	<button className="create-btn" color="light">
+					    		<span>Create Board</span>
+					    	</button>
+					    	:
+					    	<button className="create-btn-nocursor" color="light">
+					    		<span>Create Board</span>
+					    	</button>
+					    }
+					    	
 				    	<MDBNavLink to="/board/Templates" className="start-with-a-template">
 				    		<MDBIcon className="md-icon" fab icon="trello" />
 				    		<span>Start-with-a-Template</span>
@@ -173,7 +302,8 @@ class Boards extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  starredBoard: state.starred
+  starredBoard: state.starred,
+  theme: state.theme
 });
 
 

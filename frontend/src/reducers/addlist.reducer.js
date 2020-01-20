@@ -3,19 +3,24 @@ import * as types from '../constants/type-constant';
 const isEmpty = require("is-empty");
 
 const initialState = {
-  loginStatus: false,
-  user: {},
-  loading: false
+  listTitle: '',
+  showFlag: true
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case types.LOG_IN_SUCCESS:
+    case types.ADD_LIST:
       return {
         ...state,
-        loginStatus: !isEmpty(action.data),
-        user: action.data
+        listTitle: action.payload.title,
+        showFlag: action.payload.showFlag
       };
+    case types.CLOSE_LIST:
+    return {
+      ...state,
+      showFlag: action.payload
+
+    }
     default:
       return state;
   }

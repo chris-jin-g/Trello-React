@@ -20,10 +20,12 @@ connection.once('open', () => {
 });
 
 
-// user route
+// user routes
 const userRouter = require('./routes/route_user');
+const themeRouter = require('./routes/route_theme');
 
 app.use('/user', userRouter);
+app.use('/theme', themeRouter);
 
 app.listen(port, () => {
 	console.log(`Server is running on port: ${port}`);

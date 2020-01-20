@@ -16,6 +16,7 @@ export default class Navbar extends Component {
 		this.cardSearch = this.cardSearch.bind(this);	
 		this.onClose = this.CloseSearch.bind(this);
 		this.toggle = this.toggle.bind(this);
+		this.returnBoard = this.returnBoard.bind(this);
 
 		this.state = {
 			modal: false
@@ -57,13 +58,17 @@ export default class Navbar extends Component {
 		});
 	}
 
+	returnBoard() {
+		window.location = '/board';
+	}
+
 	render() {
 		return (
 			<>
-				<MDBNavbar style={{width: 100+"%", backgroundColor: "#026aa7", padding: 4+"px"}}>
+				<MDBNavbar style={{backgroundColor: this.props.bk}}>
 					<MDBNavbarNav left style={{display: "contents"}}>
-						<Globtn bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="home" size="32" iconsize="16px" borderRadius="3" />
-						<Globtn toggle={this.toggle} value="Boards" bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={true} type="trello" size="32" iconsize="16px" borderRadius="3" />
+						<Globtn bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="home" size="32" iconsize="16px" borderRadius="3"  />
+						<Globtn toggle={this.toggle} value="Boards" bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={true} type="trello" size="32" iconsize="16px" borderRadius="3" spanLeft="9px" />
 						
 						<div className="card-search">
 							<input onClick={this.cardSearch} id="card-search" type="text" className="card-search" />
@@ -72,7 +77,7 @@ export default class Navbar extends Component {
 							<MDBIcon id="arrow-up" className="hidden arrow-up" icon="long-arrow-alt-up" />
 						</div>
 					</MDBNavbarNav>
-					<img className="board-logo" src={trelloImg} height="30px" />
+					<img onClick={this.returnBoard} className="board-logo" src={trelloImg} height="30px" />
 					<MDBNavbarNav right style={{display: "block"}}>
 						<Globtn bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="plus" size="32" iconsize="16px" borderRadius="3"/>
 						<Globtn bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="info-circle" size="32" iconsize="16px" borderRadius="3" />

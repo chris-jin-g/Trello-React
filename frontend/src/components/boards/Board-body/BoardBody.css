@@ -17,3 +17,8 @@
 	background-color: rgba(9,30,66,.08);
 	border-radius: 6px !important;
 }
+.li-items:focus {
+	background-color: rgba(9,30,66,.08) !important;
+	border-radius: 6px !important;
+	z-index: 1!important;
+}

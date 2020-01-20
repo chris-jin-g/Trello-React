@@ -26,13 +26,30 @@
 	width: max-content;
 	box-shadow: none !important;
 }
-.create-btn {
+.create-btn-nocursor {
 	position: absolute;
-	left: -6px;
-	bottom: 7px;
+	left: 0px;
+	bottom: 10px;
 	padding: 6px 12px !important;
 	cursor: not-allowed !important;
 	text-transform: none !important;
+	border: none;
+	font-size: 14px;
+	border-radius: 3px;
+}
+.create-btn {
+	position: absolute;
+	left: 0px;
+	bottom: 10px;
+	padding: 6px 12px !important;
+	cursor: pointer !important;
+	text-transform: none !important;
+	background-color: #5aac44 !important;
+	box-shadow: none;
+	border: none;
+	font-size: 14px;
+	color: #fff !important;
+	border-radius: 3px;
 }
 .start-with-a-template {
 	align-items: center !important;

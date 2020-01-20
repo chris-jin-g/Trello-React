@@ -120,6 +120,7 @@
 	box-shadow: none;
 	width: inherit;
 	border: none;
+	border-radius: 3px;
 }
 .check-icon {
 	position: relative;
@@ -127,8 +128,10 @@
 }
 .check-icon::before {
 	position: absolute;
-	bottom: 0;
-	left: -6px;
+	bottom: 2px;
+	left: -5px;
+	color: white;
+	font-size: 12px;
 }
 
 

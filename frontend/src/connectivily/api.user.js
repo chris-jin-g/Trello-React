@@ -17,3 +17,11 @@ export async function signup(userdata) {
 		data: userdata
 	});
 }
+
+export async function getTheme() {
+	const baseUrl = "http://localhost:4000/theme/gettheme/";
+	return axios.request({
+		method: 'get',
+		url: baseUrl
+	});
+}

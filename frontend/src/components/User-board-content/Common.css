@@ -1,0 +1,10 @@
+.CommonBoard {
+	background-size: cover;
+	height: 100vh;
+}
+.Globtn-divider {
+	border-color: rgba(0,0,0,.2);
+	height: 16px;
+	margin: 8px 8px 8px 4px;
+	border-left: 1px solid grey;
+}

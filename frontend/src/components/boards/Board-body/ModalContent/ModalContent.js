@@ -7,6 +7,25 @@ import './Modal.css';
 
 
 export default class ModalContent extends Component {
+	constructor(props) {
+		super(props);
+		this.onChange = this.onChange.bind(this);
+
+		this.state = {
+			value: '',
+			isavailable: false
+		}
+	}
+
+	onChange(e) {
+		this.setState({
+			value: e.target.value
+		});
+		if (e.target.value !== '') {
+			
+		}
+	}
+
 	render() {
 		return (
 			<>
@@ -15,7 +34,12 @@ export default class ModalContent extends Component {
 						<button onClick={this.props.toggle} className="close-btn">
 							<MDBIcon icon="times" />
 						</button>
-						<input type="text" placeholder="Add board title" />
+						<input
+						value={this.target.value}
+						onChange={this.onChange}
+						type="text"
+						placeholder="Add board title"
+						/>
 						<div>
 							<button className="select-btn">
 								<span>No team</span>

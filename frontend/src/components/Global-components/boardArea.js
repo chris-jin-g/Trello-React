@@ -1,9 +1,8 @@
 import React, { Component, useState } from 'react';
-import { MDBIcon } from 'mdbreact';
+import { MDBIcon, MDBLink } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { changeStarred } from '../../actions/user.action';
-import bj from '../../trello-images/board.jpg';
 
 // Import css for it
 import './GloCss.css';
@@ -13,6 +12,7 @@ class BoardArea extends Component {
 		super();
 
 		this.changeStar = this.changeStar.bind(this);
+		// this.toMainBoard = this.toMainBoard.bind(this);
 
 		this.state = {
 			clicked: false,
@@ -21,26 +21,31 @@ class BoardArea extends Component {
 			hover: true,
 			boardid: '',
 			starred: false,
-			bk: ''
+			bk: '',
+			url: ''
 		}
+
+
 	}
 
 
-	componentDidMount() {
+	componentWillMount() {
 		if (this.props.clicked == true) {
 			this.setState({
 				clicked: this.props.clicked,
 				color: 'yellow',
-				right: '0px',
+				right: '6px',
 				hover: false,
 				boardid: this.props.boardid,
 				starred: true,
-				bk: this.props.bk
+				bk: this.props.bk,
+				url: parseInt(this.props.boardid)+1
 			});
 		} else {
 			this.setState({
 				boardid: this.props.boardid,
-				bk: this.props.bk
+				bk: this.props.bk,
+				url: parseInt(this.props.boardid)+1
 			});
 		}
 		
@@ -48,11 +53,10 @@ class BoardArea extends Component {
 
 	componentWillReceiveProps(newProps) {
 		if (newProps.starred == true) {
-			
 			this.setState({
 				clicked: newProps.starred,
 				color: 'yellow',
-				right: '0px',
+				right: '6px',
 				hover: false,
 				boardid: newProps.boardid,
 				starred: true,
@@ -81,17 +85,15 @@ class BoardArea extends Component {
 				clicked: !this.state.clicked,
 				starred: !this.state.starred
 			});
-
 			const data = {
 				boardid: this.state.boardid,
 				starred: !this.state.starred
 			}
-
 			this.props.changeStarred(data);
 		} else {
 			this.setState({
 				color: 'yellow',
-				right: '0px',
+				right: '6px',
 				hover: false,
 				clicked: !this.state.clicked,
 				starred: !this.state.starred
@@ -100,28 +102,59 @@ class BoardArea extends Component {
 				boardid: this.state.boardid,
 				starred: !this.state.starred
 			}
-
 			this.props.changeStarred(data);
-
 		}
-		
 	}
+
+	// toMainBoard() {
+	// 	let urlId = parseInt(this.state.boardid) + 1;
+	// 	window.location = '/b/'+urlId;
+	// }
+
 	render() {
+		const regex = /^http/g;
+		const iconStyle = {
+			color: `${this.state.color}`,
+			right: `${this.state.right}`,
+			zIndex: 9999,
+			position: "absolute"
+		}
+
 		return (
 			<div className="hover lg-board md-board sm-board">
-				{ 	(this.state.hover == true)?
-					<a className="board-title icon-hover" style={{backgroundImage: `url(${this.state.bk})`}}>
-						<div className="board-tile-details is-badged">
-							<span>{this.props.title}</span>
-							<MDBIcon onClick={this.changeStar} style={{color: `${this.state.color}`, right: `${this.state.right}`}} className="icon-star" icon="star" />
-						</div>
-					</a>:
-					<a className="board-title" style={{backgroundImage: `url(${this.state.bk})`}}>
-						<div className="board-tile-details is-badged">
-							<span>{this.props.title}</span>
-							<MDBIcon onClick={this.changeStar} style={{color: `${this.state.color}`, right: `${this.state.right}`}} className="icon-star" icon="star" />
-						</div>
-					</a>
+				{ 	
+					(regex.test(this.state.bk))?
+						(this.state.hover == true)?
+							<a className="board-title icon-hover" style={{backgroundImage: `url(${this.state.bk})`}}>
+								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+									<span>{this.props.title}</span>
+									
+								</MDBLink>
+								<MDBIcon onClick={this.changeStar} style={iconStyle} className="icon-star" icon="star" />
+							</a>:
+							<a className="board-title" style={{backgroundImage: `url(${this.state.bk})`}}>
+								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+									<span>{this.props.title}</span>
+									
+								</MDBLink>
+								<MDBIcon onClick={this.changeStar} style={iconStyle} className="icon-star" icon="star" />
+							</a>
+					:
+						(this.state.hover == true)?
+							<a className="board-title icon-hover" style={{backgroundColor: `${this.state.bk}`}}>
+								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+									<span>{this.props.title}</span>
+									
+								</MDBLink>
+								<MDBIcon onClick={this.changeStar} style={iconStyle} className="icon-star" icon="star" />
+							</a>:
+							<a className="board-title" style={{backgroundColor: `${this.state.bk}`}}>
+								<MDBLink to={'/b/'+this.state.url} className="board-tile-details is-badged">
+									<span>{this.props.title}</span>
+									
+								</MDBLink>
+								<MDBIcon onClick={this.changeStar} style={iconStyle} className="icon-star" icon="star" />
+							</a>
 				}
 			</div>
 		);

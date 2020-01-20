@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// let tbl_user = require('../models/user.model');
 let db = require('../models');
 const validateEmail = require("../validation/validateEmail");
 const validatePassword = require("../validation/validatePassword");
@@ -43,6 +42,8 @@ router.route('/login').post((req, res) =>{
 						.then(boarddata => {
 							// User matched
 					        // Create JWT Payload
+
+					        console.log(boarddata)
 					        const payload = {
 					          id: boarddata[0].userid,
 					          name: boarddata[0].username,

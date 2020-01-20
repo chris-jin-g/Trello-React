@@ -3,18 +3,15 @@ import * as types from '../constants/type-constant';
 const isEmpty = require("is-empty");
 
 const initialState = {
-  loginStatus: false,
-  user: {},
-  loading: false
+  themeData: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case types.LOG_IN_SUCCESS:
+    case types.GET_THEME_SUCCESS:
       return {
         ...state,
-        loginStatus: !isEmpty(action.data),
-        user: action.data
+        themeData: action.payload.theme
       };
     default:
       return state;

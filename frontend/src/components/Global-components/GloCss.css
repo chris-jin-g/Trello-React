@@ -8,21 +8,21 @@ button:hover {
 	background-color: #97a0af;
 	background-size: cover;
 	background-position: 50%;
-	color: #fff !important;
 	line-height: 20px;
 	padding: 8px !important;
 	position: relative;
 	text-decoration: none;
 	border-radius: 3px !important;
 	display: block;
-	font-size: 16px !important;
 }
 .board-tile-details {
 	display: flex;
 	height: 80px;
-	position: relative;
 	flex-direction: column;
 	justify-content: space-between;
+	padding: unset !important;
+	font-size: 16px !important;
+	color: #fff !important;
 }
 .board-tile-details span {
 	font-weight: bold;
@@ -39,13 +39,15 @@ button:hover {
 .icon-hover:hover .icon-star {
 	animation-name: LeftStar;
 	animation-duration: .3s;
-	right: 0;
+	right: 6px;
 }
 .icon-star {
 	display: contents;
 	position: absolute;
 	right: -35px;
-	bottom: 5px;
+	bottom: 10px;
+	color: white;
+	font-size: 16px;
 }
 .icon-star:hover {
 	animation-duration: .3s;
@@ -57,6 +59,160 @@ button:hover {
 }
 .mod-add span {
 	margin: auto;
+}
+
+
+/*Add-list*/
+.list-body {
+	width: 272px;
+	margin: 0 4px;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: top;
+	white-space: nowrap;
+	color: #172b4d;
+	padding: 6px 8px;
+	background-color: rgba(0,0,0,.08);
+	border-radius: 3px;
+	min-height: 32px;
+	transition: background 85ms ease-in,opacity 40ms ease-in,border-color 85ms ease-in;
+	font-size: 16px;
+	cursor: pointer;
+}
+.list-body:hover {
+	background-color: rgba(0,0,0,.16);
+}
+.plus-icon {
+	width: 20px;
+}
+.add-list-content {
+	width: 272px;
+	margin: 0 4px;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: top;
+	white-space: nowrap;
+	color: #172b4d;
+	padding: 6px 8px;
+	background-color: #ebecf0;
+	border-radius: 3px;
+	min-height: 32px;
+	transition: background 85ms ease-in,opacity 40ms ease-in,border-color 85ms ease-in;
+	font-size: 16px;
+	cursor: pointer;
+}
+.title-input {
+	background: #fff;
+	border: none;
+	box-shadow: inset 0 0 0 2px #0079bf;
+	display: block;
+	margin: 0;
+	transition: margin 85ms ease-in,background 85ms ease-in;
+	width: 100%;
+	padding: 8px 12px;
+	color: #172b4d;
+	box-sizing: border-box;
+	-webkit-appearance: none;
+	border-radius: 3px;
+}
+.add-list-btn {
+	float: left !important;
+	min-height: 32px;
+	height: 32px;
+	margin-top: 0;
+	margin-left: 0 !important;
+	border-radius: 3px !important;
+	padding: 6px 12px !important;
+	box-shadow: none !important;
+}
+.add-list-footer {
+	display: flex;
+	align-items: center;
+}
+.list-times-icon {
+	font-size: 20px;
+	margin: 0 4px;
+}
+.header-title-input {
+	background: transparent;
+	border-radius: 3px;
+	box-shadow: none;
+	font-weight: 600;
+	min-height: 20px;
+	padding: 4px 8px;
+	max-height: 256px;
+	border: none;
+}
+.header-title-input:focus {
+	background: #fff;
+	border: none;
+	box-shadow: inset 0 0 0 2px #0079bf;
+}
+.glo-btn:focus {
+	outline: none;
+}
+.glo-btn:hover {
+	background-color: rgba(9,30,66,.08) !important;
+}
+.link-title {
+	margin: 4px 4px 8px 4px !important;
+	padding: 4px !important;
+	background-color: white;
+	color: #172b4d;
+	box-shadow: 0 1px 0 rgba(9,30,66,.25);
+	cursor: pointer;
+	display: block;
+	margin-bottom: 8px;
+	max-width: 300px;
+	min-height: 20px;
+	font-size: 16px !important;
+	border-radius: 3px !important;
+}
+.link-title:hover {
+	background-color: #f4f5f7;
+	border-bottom-color: rgba(9, 30, 66, .25);
+	color: #091e42;
+}
+.link-title:hover .pen-icon {
+	color: #6b778c;
+}
+.pen-icon {
+	float: right;
+	color: transparent;
+	background-color: transparent;
+	border-radius: 3px;
+	font-size: 12px;
+	margin: 5px 5px 0 0;
+}
+.trello-icon::before {
+	position: absolute;
+	right: 11px;
+	top: 9px;
+
+}
+.trello-icon:hover {
+	background-color: rgba(9,30,66,.08) !important;
+}
+.trello-icon {
+	position: relative;
+	float: right;
+	color: #6b778c;
+	background-color: transparent;
+	border-radius: 3px;
+	font-size: 12px;
+	height: 32px;
+	width: 32px;	
+}
+.add-list-part {
+	display: inline-block;
+	width: 84%;
+	height: 28px;
+	border-radius: 3px;
+	padding: 3px 5px;
+
+}
+.add-list-part:hover {
+	background-color: rgba(9,30,66,.08) !important;
 }
 
 
@@ -98,7 +254,7 @@ button:hover {
 
 @keyframes LeftStar {
 	0% {right: -35px;}
-	100% {right: 0}
+	100% {right: 6px}
 }
 
 @keyframes Zoomout {

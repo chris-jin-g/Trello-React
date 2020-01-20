@@ -3,7 +3,7 @@ import { MDBIcon } from 'mdbreact';
 
 import './GloCss.css'
 
-const Globtn = ({ toggle, bkcolor, color, type, iconsize, size, fab, value, borderRadius}) => {
+const Globtn = ({ toggle, bkcolor, color, type, iconsize, size, fab, value, borderRadius, spanLeft}) => {
 	const styles = {
 		backgroundColor: `${bkcolor}`,
 		color: `${color}`,
@@ -13,12 +13,12 @@ const Globtn = ({ toggle, bkcolor, color, type, iconsize, size, fab, value, bord
 		marginRight: 4+"px",
 	}
 	return (
-		<button onClick={toggle} style={styles}>
+		<button className="glo-btn" onClick={toggle} style={styles}>
 			{
 				fab? <MDBIcon fab icon={type} style={{fontSize: `${iconsize}`}} />:
 					 <MDBIcon icon={type} style={{fontSize: `${iconsize}`}} />
 			}
-			{value? <span style={{marginLeft: 9+"px"}}>{value}</span>: ""}
+			{value? <span style={{marginLeft: `${spanLeft}`}}>{value}</span>: ""}
 		</button>
 	);
 }

@@ -54,3 +54,30 @@ export function changeStarred(starred) {
 		payload: starred
 	}
 }
+
+export function getThemeRequest() {
+	return {
+		type: types.GET_THEME_REQUEST
+	}
+}
+
+export function getThemeSuccess(data) {
+	return {
+		type: types.GET_THEME_SUCCESS,
+		payload: data
+	}
+}
+
+export function addList(data) {
+	return {
+		type: types.ADD_LIST,
+		payload: data
+	}
+}
+
+export function closeList(showFlag) {
+	return {
+		type: types.CLOSE_LIST,
+		payload: showFlag
+	}
+} 

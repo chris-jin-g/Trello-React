@@ -1,4 +1,4 @@
-import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { takeLatest, call, put, all, takeEvery } from 'redux-saga/effects';
 import * as types from '../constants/type-constant';
 import * as api from '../connectivily/api.user';
 import jwt_decode from "jwt-decode";
@@ -12,6 +12,7 @@ export function* doLoginUser(action) {
 		const userdata = action.payload.data;
 		// login backend
 		const responsebody = yield call(api.login, userdata);
+		console.log(responsebody)
 
 		if (responsebody.data.token === "undefined") {
 			throw new Error('Unable to find JWT in response body');
@@ -76,10 +77,35 @@ export function* watchLogout() {
 	yield takeLatest(types.LOG_OUT, doLogOut)
 }
 
+export function* doGetThemeRequest() {
+	try {
+		// getTheme backend
+		const responsebody = yield call(api.getTheme);
+
+		if (responsebody.data.token === "undefined") {
+			throw new Error('Unable to find JWT in response body');
+		}
+
+		const token = responsebody.data.token;
+		
+		// Decode token to get user data
+		const decoded = jwt_decode(token);
+		yield put(userAction.getThemeSuccess(decoded));
+
+	} catch (err) {
+		yield put(userAction.getThemeSuccess({}));
+	}
+}
+
+export function* watchGetThemeRequest() {
+	yield takeEvery(types.GET_THEME_REQUEST, doGetThemeRequest)
+}
+
 export default function* rootSaga() {
 	yield all([
 		watchLogin(),
 		watchSignup(),
 		watchLogout(),
+		watchGetThemeRequest(),
 	]);
 }

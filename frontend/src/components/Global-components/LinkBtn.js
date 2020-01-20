@@ -5,14 +5,12 @@ import { Link } from 'react-router-dom';
 // Import css for it
 import './GloCss.css';
 
-const LinkBtn = ({ fab, to, icon, value, bold, fontsize, color, bkColor, onClick}) => {
+const LinkBtn = ({ fab, to, icon, value, bold, fontsize, color, bkColor}) => {
 	
 	const IconStyle = {
 		fontSize: `${fontsize}`+"px",
 		width: 32+"px",
 		textAlign: 'center',
-		
-		
 	}
 
 	const NavLink = {
@@ -22,7 +20,7 @@ const LinkBtn = ({ fab, to, icon, value, bold, fontsize, color, bkColor, onClick
 		display: "block"
 	}
 	return (
-		<Link onClick={onClick} to={to} style={NavLink} className="Mdblink">
+		<Link to={to} style={NavLink} className="Mdblink">
 			{
 				fab?<MDBIcon fab icon={icon} style={IconStyle} />:
 					<MDBIcon icon={icon} style={IconStyle} />
