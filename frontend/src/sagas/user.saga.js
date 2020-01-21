@@ -12,7 +12,6 @@ export function* doLoginUser(action) {
 		const userdata = action.payload.data;
 		// login backend
 		const responsebody = yield call(api.login, userdata);
-		console.log(responsebody)
 
 		if (responsebody.data.token === "undefined") {
 			throw new Error('Unable to find JWT in response body');

@@ -6,11 +6,9 @@ import { MDBLink, MDBIcon } from 'mdbreact';
 // Import css and components for it
 import '../GloCss.css';
 import Globtn from '../board/Globtn';
-import AddList from './AddList';
 import Card from './Card';
 import Title from './Title';
-import AddCard from './AddCard';
-// import AddCardContent form './AddCardContent';
+import AddCardBody from './AddCardBody';
 
 
 class ListBoard extends Component {
@@ -20,13 +18,14 @@ class ListBoard extends Component {
 		this.state = {
 			title: '',
 			boardContent: {},
-			cardAddBtnFlag: false 
+			boardid: ''
 		}
 	}
 
 	componentWillMount() {
 		this.setState({
-			boardContent: this.props.content
+			boardContent: this.props.content,
+			boardid: this.props.boardid
 		});
 	}
 
@@ -41,7 +40,7 @@ class ListBoard extends Component {
 		return (
 			<>
 				{	
-					boardContent.map(content => {
+					boardContent.map((content, key) => {
 						return (
 							<div className="add-list-content">
 									<Title title={content.title} />
@@ -53,9 +52,16 @@ class ListBoard extends Component {
 												return <Card title={title} />
 											})
 										:
-										<div className="hidden"></div>
+											<div className="hidden"></div>
 									}
-									<AddCard />									
+									{
+										(content.parts.length !== 0) ?
+											<AddCardBody title="Add another card" boardid={this.state.boardid} boardAreaid={key} />
+										:
+											<AddCardBody title="Add a card" boardid={this.state.boardid} boardAreaid={key} />				 
+									}
+									
+									
 							</div>
 						)
 					})

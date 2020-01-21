@@ -6,8 +6,6 @@ import { connect } from 'react-redux';
 import Navbar from '../boards/Navbar/Navbar';
 import FunctionBar from './FunctionBar';
 
-import bkImg from '../../trello-images/board.jpg'
-
 // Import components and css for it
 import './Common.css';
 import AddList from '../Global-components/user-board-content/AddList';
@@ -27,12 +25,13 @@ class CommonBoard extends Component {
 			boardTitle: {},
 			theme: {},
 			showFlag: false,
-			boardid:''
+			boardid:'',
+			areaCardNum: 0
 		}
 	}
 
-	componentWillMount() {
 
+	componentWillMount() {
 
 		// match board and board area
 		const boards = this.props.user.user.boards;
@@ -51,7 +50,8 @@ class CommonBoard extends Component {
 		boardArea.map((boardarea, key) => {
 			if (key == compareKey) {
 				this.setState({
-					boardContent: boardarea
+					boardContent: boardarea,
+					areaCardNum: boardarea.length
 				});
 			}
 		});
@@ -60,23 +60,39 @@ class CommonBoard extends Component {
 		this.setState({
 			theme: this.props.theme.themeData
 		});
+
+		document.addEventListener("click", () => {
+			if (this.state.showFlag == false) {
+				return false;
+			} else {
+				this.setState({
+					showFlag: !this.state.showFlag
+				})
+			}
+		});
 	}
 
 	componentWillReceiveProps(newProps) {
-		console.log("newProps")
-		console.log(newProps.user)
+		console.log("newProps") 
+		console.log(newProps.addlist.showFlag)
 
 		newProps.user.boardCollection.boards.map((boardarea, key) => {
 			if (key == this.state.boardid) {
 				this.setState({
-					boardContent: boardarea
+					boardContent: boardarea,
+					areaCardNum: boardarea.length
 				});
 			}
 		});
 
-		this.setState({
-			showFlag: newProps.addlist.showFlag
+		if (newProps.addlist.showFlag == false) {
+			return false;
+		} else {
+			this.setState({
+			showFlag: !newProps.addlist.showFlag
 		});
+		}
+		
 	}
 
 	showListContent() {
@@ -87,6 +103,7 @@ class CommonBoard extends Component {
 
 	render() {
 		const { boardContent, boardTitle, theme } = this.state;
+		console.log(boardContent)
 		const regex = /bk/;
 		return (
 			<>	{
@@ -97,11 +114,14 @@ class CommonBoard extends Component {
 										<div className="CommonBoard" style={{backgroundImage: `url(${data.url})`}}>
 											<Navbar bk="rgba(0,0,0,.32)" />
 											<FunctionBar title={boardTitle.title} starred={boardTitle.starred} />
-											<div style={{padding: "0 4px"}}>
-												<ListBoard content={boardContent} />
+											<div className="main-board">
+												<ListBoard content={boardContent} boardid={this.state.boardid} />
 												{
 													(!this.state.showFlag) ?
-														<AddList onClick={this.showListContent} />
+														(this.state.areaCardNum == 0) ?
+															<AddList title="Add a list" onClick={this.showListContent} />
+														:
+															<AddList title="Add another list" onClick={this.showListContent} />
 													:
 														<AddListContent showFlag={this.state.showFlag} boardid={this.state.boardid} />
 												}
@@ -118,11 +138,14 @@ class CommonBoard extends Component {
 										<div className="CommonBoard" style={{backgroundColor: `${data.color}`}}>
 											<Navbar bk="rgba(0,0,0,.32)" />
 											<FunctionBar title={boardTitle.title} starred={boardTitle.starred} />
-											<div style={{padding: "0 4px"}}>
-												<ListBoard content={boardContent} />
+											<div className="main-board">
+												<ListBoard content={boardContent} boardid={this.state.boardid} />
 												{
 													(!this.state.showFlag) ?
-														<AddList onClick={this.showListContent} />
+														(this.state.areaCardNum == 0) ?
+															<AddList title="Add a list" onClick={this.showListContent} />
+														:
+															<AddList title="Add another list" onClick={this.showListContent} />
 													:
 														<AddListContent showFlag={this.state.showFlag} boardid={this.state.boardid} />
 												}

@@ -26,19 +26,43 @@ class Boards extends Component {
 			starredBoard: {},
 			value: '',
 			visible: false,
-			theme: {}
+			theme: {},
+			recentedBoard: {}
 		}
 	}
 
 	componentWillMount() {
 		const boards = this.props.user.user.boards;
 		const newState = this.props.starredBoard;
+
+		console.log("boards")
+		console.log(boards)
+		
+		// Insert recented boards from boards
+		let recentedBoard = [];
+		let compareKey = 0;
+		boards.map(value => {
+
+			if (value.recented > compareKey) {
+				recentedBoard.push(value);
+				compareKey = value.recented;
+			} else {
+				recentedBoard.map((recented, key) => {
+					console.log(recented)
+					
+				});
+			}
+			
+		});
+		
+		// Updata starred of boards
 		boards.map((value, i) => {
 			if (value.boardid == newState.boardid) {
 				value.starred = newState.starStatus;
 			}
 		});
 
+		// Insert starred boards from boards
 		let starredBoard = [];
 		boards.map((value, i) => {
 			if (value.starred) {
@@ -50,7 +74,8 @@ class Boards extends Component {
 			boards: boards,
 			id: this.props.user.user.id,
 			starredBoard: starredBoard,
-			theme: this.props.theme.themeData
+			theme: this.props.theme.themeData,
+			recentedBoard: recentedBoard
 		});
 	}
 
@@ -103,7 +128,8 @@ class Boards extends Component {
 	}
 
 	render() {
-		const { starredBoard, boards, theme } = this.state;
+		const { starredBoard, boards, theme, recentedBoard } = this.state;
+		console.log(recentedBoard)
 		const regex = /bk/;
 		return (
 			<>

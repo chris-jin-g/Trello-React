@@ -6,11 +6,15 @@ import { MDBIcon } from 'mdbreact';
 import '../GloCss.css';
 
 export default class AddList extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<div onClick={this.props.onClick}  className="list-body">
 				<MDBIcon className="plus-icon" icon="plus"  />
-				<span>Add a List</span>
+				<span>{this.props.title}</span>
 			</div>
 		);
 	}

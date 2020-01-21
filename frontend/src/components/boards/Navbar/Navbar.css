@@ -1,3 +1,9 @@
+.navbar {
+	padding: 4px !important;
+	position: sticky !important;
+	top: 0;
+	z-index: 10;	
+}
 .board-logo {
 	opacity: .5;
 	cursor: pointer;

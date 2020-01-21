@@ -55,7 +55,7 @@ export default class LeftBody extends Component {
 
 	render() {
 		return (
-			<div style={{position: "sticky", top: 0}}>
+			<div style={{position: "sticky", top: 40+"px"}}>
 				<div className="LeftBody">
 					<MDBListGroup style={{marginBottom: 12+"px"}}>
 						<MDBListGroupItem onClick={this.hiddenRoot} className="li-items">

@@ -11,7 +11,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.LOG_IN_SUCCESS:
-    console.log(action.data)
       return {
         ...state,
         loginStatus: !isEmpty(action.data),
@@ -19,17 +18,25 @@ export default function(state = initialState, action) {
         boardCollection: action.data.boardCollection
       };
     case types.ADD_LIST:
-    console.log("userreducer")
-    console.log(action.payload)
-    const newContent = {
-      title: action.payload.title,
-      parts: []
-    };
-    state.boardCollection.boards[action.payload.boardid].push(newContent)
-    console.log(state)
+      const newContent = {
+        title: action.payload.title,
+        parts: []
+      };
+      state.boardCollection.boards[action.payload.boardid].push(newContent);
       return {
         ...state 
       }
+    case types.ADD_CARD:
+      state.boardCollection.boards.map((board, key) => {
+        if (key == action.payload.boardid) {
+          board.map((data, key) => {
+            if (key == action.payload.boardAreaId) {
+              data.parts.push(action.payload.title)
+            }
+          })
+        }
+      })
+      return {...state}
     default:
       return state;
   }

@@ -24,6 +24,9 @@ button:hover {
 	font-size: 16px !important;
 	color: #fff !important;
 }
+.board-tile-details:focus {
+	outline: none !important;
+}
 .board-tile-details span {
 	font-weight: bold;
 }
@@ -48,6 +51,7 @@ button:hover {
 	bottom: 10px;
 	color: white;
 	font-size: 16px;
+	font-weight: 500 !important;
 }
 .icon-star:hover {
 	animation-duration: .3s;
@@ -93,7 +97,7 @@ button:hover {
 	vertical-align: top;
 	white-space: nowrap;
 	color: #172b4d;
-	padding: 6px 8px;
+	padding: 4px;
 	background-color: #ebecf0;
 	border-radius: 3px;
 	min-height: 32px;
@@ -109,28 +113,32 @@ button:hover {
 	margin: 0;
 	transition: margin 85ms ease-in,background 85ms ease-in;
 	width: 100%;
-	padding: 8px 12px;
+	padding: 6px 12px;
 	color: #172b4d;
 	box-sizing: border-box;
 	-webkit-appearance: none;
 	border-radius: 3px;
 }
 .add-list-btn {
+	background-color: #5aac44 !important;
+	text-transform: none !important;
 	float: left !important;
 	min-height: 32px;
 	height: 32px;
-	margin-top: 0;
-	margin-left: 0 !important;
+	margin: 8px 4px 0 0 !important;
+	margin-top: 0 !important;
 	border-radius: 3px !important;
 	padding: 6px 12px !important;
 	box-shadow: none !important;
+	font-size: 14px !important;
 }
 .add-list-footer {
 	display: flex;
+	margin: 4px 0 0 !important;
 	align-items: center;
 }
 .list-times-icon {
-	font-size: 20px;
+	font-size: 26px;
 	margin: 0 4px;
 }
 .header-title-input {
@@ -214,7 +222,9 @@ button:hover {
 .add-list-part:hover {
 	background-color: rgba(9,30,66,.08) !important;
 }
-
+.add-card-list-content {
+	padding: 0 4px;
+}
 
 
 /*Media*/ 

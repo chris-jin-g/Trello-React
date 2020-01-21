@@ -30,7 +30,7 @@ export default class Card extends Component {
 
 	render() {
 		return (
-			<div>
+			<div style={{height: 36+"px"}}>
 				<input
 				className="header-title-input"
 				type="text"

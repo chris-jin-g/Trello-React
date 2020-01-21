@@ -4,14 +4,12 @@ const isEmpty = require("is-empty");
 
 const initialState = {
   listTitle: '',
-  showFlag: true
+  showFlag: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.ADD_LIST:
-    console.log("addlist")
-    console.log(action.payload)
       return {
         ...state,
         listTitle: action.payload.title,
@@ -20,7 +18,7 @@ export default function(state = initialState, action) {
     case types.CLOSE_LIST:
     return {
       ...state,
-      showFlag: action.payload.showStatus
+      showFlag: action.payload
 
     }
     default:

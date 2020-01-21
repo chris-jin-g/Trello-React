@@ -88,3 +88,10 @@ export function saveCompareId(id) {
 		payload: id
 	}
 }
+
+export function addCard(data) {
+	return {
+		type: types.ADD_CARD,
+		payload: data
+	}
+}

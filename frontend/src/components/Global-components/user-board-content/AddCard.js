@@ -9,13 +9,13 @@ export default class Card extends Component {
 
 	render() {
 		return (
-			<>
-				<div className="add-list-part">
+			<div style={{height: 36+"px"}}>
+				<div onClick={this.props.onClick} className="add-list-part">
 					<MDBIcon className="plus-icon" style={{margin: '0 4px'}} icon="plus"  />
-					<span>Add a List</span>
+					<span>{this.props.title}</span>
 				</div>
 				<MDBIcon fab icon="trello" className="trello-icon" />
-			</>
+			</div>
 		);
 	}
 } 

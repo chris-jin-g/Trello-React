@@ -3,11 +3,13 @@ import {  MDBNavbar, MDBNavItem, MDBNavLink, MDBIcon, MDBNavbarNav, MDBCollapse,
 
 // Import components for it
 import Globtn from '../../Global-components/board/Globtn';
-import BoardModal from '../Board-body/ModalContent/BoardModal';
+import BoardsModal from '../../Global-components/Modals/user.boards.modal';
 
 // Import imgs and css for it
 import './Navbar.css';
-import trelloImg from '../../../trello-images/logo.svg'
+import trelloImg from '../../../trello-images/logo.svg';
+
+
 
 export default class Navbar extends Component {
 	constructor(props) {
@@ -63,7 +65,7 @@ export default class Navbar extends Component {
 	render() {
 		return (
 			<>
-				<MDBNavbar style={{backgroundColor: this.props.bk}}>
+				<MDBNavbar className="navbar" style={{backgroundColor: this.props.bk}}>
 					<MDBNavbarNav left style={{display: "contents"}}>
 						<Globtn toggle={this.returnBoard} bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={false} type="home" size="32" iconsize="16px" borderRadius="3"  />
 						<Globtn toggle={this.toggle} value="Boards" bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={true} type="trello" size="32" iconsize="16px" borderRadius="3" spanLeft="9px" />
@@ -83,7 +85,12 @@ export default class Navbar extends Component {
 						<Globtn bkcolor="#dfe1e6" color="#172b4d" fab={true} type="yahoo" size="32" iconsize="15px" borderRadius="20" />
 					</MDBNavbarNav>
 				</MDBNavbar>
-				<BoardModal toggle={this.toggle} modalstate={this.state.modal} />
+				{
+					(this.state.modal) ?
+						<BoardsModal toggle={this.toggle} />
+					:
+					<div className="hidden"></div>
+				}
 			</>
 		);
 	}

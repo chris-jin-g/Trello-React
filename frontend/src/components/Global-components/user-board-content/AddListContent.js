@@ -15,6 +15,7 @@ class AddList extends Component {
 		this.onChange = this.onChange.bind(this);
 		this.addList = this.addList.bind(this);
 		this.Close = this.Close.bind(this);
+		this.onEnter = this.onEnter.bind(this);
 
 		this.state = {
 			title: '',
@@ -39,28 +40,46 @@ class AddList extends Component {
 			boardid: this.state.boardid
 		}
 
-		if (e.key == 'Enter') {
-			if (data.title !== '') {
-				this.props.addList(data);
-			} else {
-				alert("input title!")
-			}
-		}
-
 		if (data.title !== '') {
 				this.props.addList(data);
+
+				this.setState({
+					title: ''
+				});
+
 			} else {
-				alert("input title!")
+				return false;
 			}
 			
 	}
 
+	onEnter(e) {
+		const data = {
+			title: this.state.title,
+			showStatus: !this.state.showStatus,
+			boardid: this.state.boardid
+		}
+
+		if (e.key == 'Enter') {
+			if (data.title !== '') {
+				this.props.addList(data);
+				this.setState({
+					title: ''
+				})
+				return false;
+			} else {
+				return false;
+			}
+		}
+	}
+
 	Close() {
 		this.setState({
-			showStatus: !this.state.showStatus
+			showStatus: !this.state.showStatus,
+			title: ''
 		});
 
-		this.props.closeList(false);
+		this.props.closeList(true);
 
 	}
 
@@ -72,15 +91,17 @@ class AddList extends Component {
 
 	render() {
 		return (
-			<div onKeyPress={this.addList} className="add-list-content">
+			<div onKeyPress={this.onEnter} className="add-list-content">
+				
 				<input
 				className="title-input"
 				value={this.state.title}
 				onChange={this.onChange}
 				placeholder="Enter list title..."
 				autoFocus />
+
 				<div className="add-list-footer">
-					<MDBBtn onClick={this.addList} className="add-list-btn" color="success">Add List</MDBBtn>
+					<MDBBtn onClick={this.addList} className="add-list-btn" color="light-green">Add List</MDBBtn>
 					<MDBIcon onClick={this.Close} className="list-times-icon" icon="times" />
 				</div>
 			</div>

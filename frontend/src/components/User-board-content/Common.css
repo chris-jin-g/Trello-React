@@ -28,3 +28,8 @@
 .board-title-input:hover {
 	background-color: rgba(0,0,0,.16);
 }
+.main-board {
+	display: block ruby;
+	overflow-x: auto;
+	height: calc(100% - 100px);
+}
