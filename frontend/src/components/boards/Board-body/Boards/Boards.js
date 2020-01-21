@@ -47,9 +47,12 @@ class Boards extends Component {
 				recentedBoard.push(value);
 				compareKey = value.recented;
 			} else {
-				recentedBoard.map((recented, key) => {
-					console.log(recented)
-					
+				recentedBoard.map((data, key) => {
+					console.log(data)
+					console.log(value)
+					if (data.recented > value.recented) {
+						
+					}
 				});
 			}
 			
