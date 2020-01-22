@@ -15,3 +15,6 @@ export const ADD_LIST = "ADD_LIST";
 export const CLOSE_LIST = "CLOSE_LIST";
 export const SAVE_ID = "SAVE_ID";
 export const ADD_CARD = "ADD_CARD";
+export const RECENTED_UPDATE = "RECENTED_UPDATE";
+export const UPDATE_WINDOW_FLAG = "UPDATE_WINDOW_FLAG";
+export const TOGGLE_FLAG = "TOGGLE_FLAG";

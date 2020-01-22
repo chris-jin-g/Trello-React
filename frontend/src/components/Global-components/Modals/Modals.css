@@ -62,7 +62,8 @@
 	font-weight: 500;
 	letter-spacing: .04em;
 }
-.board-title-icon {
+.board-title-icon,
+.board-title-right-icon {
 	color: #5e6c84;
 	font-size: 12px !important;
 	font-weight: 500 !important;
@@ -71,6 +72,25 @@
 	margin-right: 4px;
 	width: 20px;
 }
+.board-title-plus-icon {
+	color: #5e6c84;
+	font-size: 12px !important;
+	font-weight: bold !important;
+	display: inline-block !important;
+	height: 20px;
+	margin-right: 4px;
+	width: 20px;
+}
+.board-title-plus-icon:before {
+	position: absolute;
+	right: 12px;
+	top: 13px;
+}
+.board-title-right-icon::before {
+	position: absolute;
+	right: 11px;
+	top: 8px
+}
 .plus-minus-btn {
 	position: absolute;
 	top: -15px;
@@ -78,13 +98,20 @@
 	border-radius: 3px;
 	margin: 0;
 	padding: 6px 5px 6px 6px;
-	background:
-	transparent;
+	background: transparent;
 	outline: none;
 	cursor: pointer;
 	border: none;
+	margin-right: 4px;
+}
+.plus-minus-btn:focus {
+	outline: none;
+}
+.plus-minus-btn:hover {
+	background-color: rgba(9,30,66,.08);
 }
 .link-board {
+	/*z-index: 10;*/
 	background-size: cover;
 	background-position: 50%;
 	width: 100%;
@@ -155,9 +182,16 @@
 }
 .other-link:hover {
 	border: none;
-box-shadow: none;
-background-color:
-rgba(9,30,66,.08);
-color:
-#172b4d;
+	box-shadow: none;
+	background-color: rgba(9,30,66,.08);
+	color: #172b4d;
+}
+.starred-empty {
+	display: block;
+	margin-top: 8px;
+	margin-bottom: 4px;
+	overflow: hidden;
+	color: #7a869a;
+	padding: 16px 30px 10px 31px;
+	font-size: 14px !important;
 }

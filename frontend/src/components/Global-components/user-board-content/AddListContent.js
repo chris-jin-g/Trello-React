@@ -33,7 +33,7 @@ class AddList extends Component {
 		});
 	}
 
-	addList(e) {
+	addList() {
 		const data = {
 			title: this.state.title,
 			showStatus: !this.state.showStatus,

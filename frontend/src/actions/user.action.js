@@ -95,3 +95,24 @@ export function addCard(data) {
 		payload: data
 	}
 }
+
+export function recentedUpdate(data) {
+	return {
+		type: types.RECENTED_UPDATE,
+		payload: data
+	}
+}
+
+export function updateWindowFlag(flag) {
+	return {
+		type: types.UPDATE_WINDOW_FLAG,
+		payload: flag
+	}
+}
+
+export function toggleFlag(data) {
+	return {
+		type: types.TOGGLE_FLAG,
+		payload: data
+	}
+}

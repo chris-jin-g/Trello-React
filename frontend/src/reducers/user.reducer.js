@@ -37,6 +37,27 @@ export default function(state = initialState, action) {
         }
       })
       return {...state}
+    case types.RECENTED_UPDATE:
+      state.user.boards.map((data, key) => {
+        if (key == action.payload.boardid) {
+          if (data.recented == 1) {
+            return true;
+          } else {
+            let currentRecented = data.recented;
+            state.user.boards.filter((el, i) => i !== action.payload).map(newdata => {
+              if (newdata.recented > currentRecented ) {
+                return false;
+              } else {
+                newdata.recented += 1;
+              }
+            });
+            data.recented = 1;
+          }
+        }
+      });
+      return {
+        ...state
+      }
     default:
       return state;
   }

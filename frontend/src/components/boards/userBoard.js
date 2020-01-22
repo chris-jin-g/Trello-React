@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { MDBContainer, MDBRow, MDMCol } from 'mdbreact';
 import { connect } from 'react-redux';
-import { getThemeRequest } from '../../actions/user.action';
+import { getThemeRequest, updateWindowFlag } from '../../actions/user.action';
 import { bindActionCreators } from 'redux';
 
 
@@ -14,6 +14,8 @@ import BoardBody from './Board-body/BoardBody';
 class userBoard extends Component {
 	constructor(props) {
 		super(props);
+
+		this.changeWindowFlag = this.changeWindowFlag.bind(this);
 
 		this.state = {
 			boardnum: {}
@@ -32,13 +34,17 @@ class userBoard extends Component {
 
 	}
 
+	changeWindowFlag() {
+		this.props.updateWindowFlag(false);
+	}
+
 	render() {
 		return (
-			<>
+			<div onClick={this.changeWindowFlag}>
 				<Navbar bk="rgb(0, 121, 191)" />
 				<BoardBody />
 				
-			</>
+			</div>
 		);
 	}
 }
@@ -49,7 +55,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    getThemeRequest
+    getThemeRequest,
+    updateWindowFlag
   }, dispatch);
 }
 

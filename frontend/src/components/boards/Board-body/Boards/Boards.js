@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 
 // Import css and components for it
 import './Boards.css';
+import '../ModalContent/Modal.css';
 import BoardArea from '../../../Global-components/board/boardArea';
 import CreateArea from '../../../Global-components/board/CreateArea';
 
@@ -33,25 +34,23 @@ class Boards extends Component {
 
 	componentWillMount() {
 		const boards = this.props.user.user.boards;
-		const newState = this.props.starredBoard;
+		const newState = this.props.starredStatus;
 
-		console.log("boards")
-		console.log(boards)
-		
 		// Insert recented boards from boards
 		let recentedBoard = [];
 		let compareKey = 0;
+		let flag = false;
 		boards.map(value => {
 
 			if (value.recented > compareKey) {
 				recentedBoard.push(value);
 				compareKey = value.recented;
 			} else {
+				flag = false;
 				recentedBoard.map((data, key) => {
-					console.log(data)
-					console.log(value)
-					if (data.recented > value.recented) {
-						
+					if (data.recented > value.recented && flag == false) {
+						recentedBoard.splice(key, 0, value);
+						flag = true;
 					}
 				});
 			}
@@ -83,13 +82,16 @@ class Boards extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
+
 		const starredBoard = this.state.starredBoard;
 		const boards = this.state.boards;
+		const newBoards = newProps.user.user.boards;
 		
-		if (newProps.starredBoard.starStatus == true) {
+		// Update starredBoard
+		if (newProps.starredStatus.starStatus == true) {
 			boards.map(data => {
-				if (data.boardid == newProps.starredBoard.boardid) {
-					data.starred = newProps.starredBoard.starStatus;
+				if (data.boardid == newProps.starredStatus.boardid) {
+					data.starred = newProps.starredStatus.starStatus;
 					starredBoard.push(data);
 				}
 			});
@@ -98,15 +100,40 @@ class Boards extends Component {
 			});
 		} else {
 			boards.map(data => {
-				if (data.boardid == newProps.starredBoard.boardid) {
-					data.starred = newProps.starredBoard.starStatus;
+				if (data.boardid == newProps.starredStatus.boardid) {
+					data.starred = newProps.starredStatus.starStatus;
 				}
 			});
 			this.setState({
-				starredBoard: starredBoard.filter(el => el.boardid !== newProps.starredBoard.boardid )
+				starredBoard: starredBoard.filter(el => el.boardid !== newProps.starredStatus.boardid )
 			});
 			 
 		}
+
+		// Update recentedBoard
+		let recentedBoard = [];
+		let compareKey = 0;
+		let flag = false;
+		newBoards.map(value => {
+			if (value.recented > compareKey) {
+				recentedBoard.push(value);
+				compareKey = value.recented;
+			} else {
+				flag = false;
+				recentedBoard.map((data, key) => {
+					if (data.recented > value.recented && flag == false) {
+						recentedBoard.splice(key, 0, value);
+						flag = true;
+					}
+				});
+			}
+			
+		});
+
+		this.setState({
+			recentedBoard: recentedBoard
+		});
+
 	}
 
 	toggle() {
@@ -132,7 +159,6 @@ class Boards extends Component {
 
 	render() {
 		const { starredBoard, boards, theme, recentedBoard } = this.state;
-		console.log(recentedBoard)
 		const regex = /bk/;
 		return (
 			<>
@@ -178,7 +204,7 @@ class Boards extends Component {
 							</div>
 							<div style={{display: "flex", flexWrap: "wrap"}}>
 									{
-										boards.map((value, i) => {
+										recentedBoard.map((value, i) => {
 											if (!value.starred) {
 												if (regex.test(value.themeTitle)) {
 													return theme[1].map(data => {
@@ -327,7 +353,7 @@ class Boards extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  starredBoard: state.starred,
+  starredStatus: state.starred,
   theme: state.theme
 });
 

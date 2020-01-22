@@ -38,6 +38,8 @@ class CommonBoard extends Component {
 		const boardArea = this.props.user.boardCollection.boards;
 		const compareKey = this.props.compareId.compareId;
 
+		console.log("CommomBoard")
+
 		boards.map((board, key) => {
 			if (board.boardid == compareKey) {
 				this.setState({
@@ -61,15 +63,15 @@ class CommonBoard extends Component {
 			theme: this.props.theme.themeData
 		});
 
-		document.addEventListener("click", () => {
-			if (this.state.showFlag == false) {
-				return false;
-			} else {
-				this.setState({
-					showFlag: !this.state.showFlag
-				})
-			}
-		});
+		// document.addEventListener("click", () => {
+		// 	if (this.state.showFlag == false) {
+		// 		return false;
+		// 	} else {
+		// 		this.setState({
+		// 			showFlag: !this.state.showFlag
+		// 		})
+		// 	}
+		// });
 	}
 
 	componentWillReceiveProps(newProps) {
@@ -103,7 +105,10 @@ class CommonBoard extends Component {
 
 	render() {
 		const { boardContent, boardTitle, theme } = this.state;
+		console.log("render")
+		console.log(boardTitle)
 		console.log(boardContent)
+		console.log(this.state.showFlag)
 		const regex = /bk/;
 		return (
 			<>	{
@@ -160,11 +165,11 @@ class CommonBoard extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-  compareId: state.compareBoardId,
-  theme: state.theme,
-  addlist: state.addlist
-});
+	const mapStateToProps = state => ({
+	  user: state.user,
+	  compareId: state.compareBoardId,
+	  theme: state.theme,
+	  addlist: state.addlist
+	});
 
-export default connect(mapStateToProps)(CommonBoard);
+	export default connect(mapStateToProps)(CommonBoard);

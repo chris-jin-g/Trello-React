@@ -10,7 +10,9 @@ import email from './email.reducer';
 import starred from './starred.reducer';
 import theme from './theme.reducer';
 import addlist from './addlist.reducer';
-import compareBoardId from './saveBoardId.reducer';  
+import compareBoardId from './saveBoardId.reducer';
+import windowFlag from './windowFlag.reducer';
+import toggleFlag from './toggleFlag.reducer';
 
 
 const persistConfig = {
@@ -27,7 +29,9 @@ const rootReducer = combineReducers({
 	starred,
 	theme,
 	addlist,
-	compareBoardId
+	compareBoardId,
+	windowFlag,
+	toggleFlag
 });
 
 export default persistReducer(persistConfig, rootReducer);

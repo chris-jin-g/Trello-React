@@ -19,7 +19,6 @@ class UserBoardContent extends Component {
 		let count = [];
 		for (let i = 1; i <= this.props.user.user.boards.length; i++) {
 			count.push(i);
-			console.log(count)
 		} 
 
 		this.setState({

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {  MDBNavbar, MDBNavItem, MDBNavLink, MDBIcon, MDBNavbarNav, MDBCollapse, MDBBtn } from 'mdbreact';
+import { connect } from 'react-redux';
+
 
 // Import components for it
 import Globtn from '../../Global-components/board/Globtn';
@@ -11,50 +13,58 @@ import trelloImg from '../../../trello-images/logo.svg';
 
 
 
-export default class Navbar extends Component {
+class Navbar extends Component {
 	constructor(props) {
 		super(props);
 
-		this.cardSearch = this.cardSearch.bind(this);	
-		this.onClose = this.CloseSearch.bind(this);
 		this.toggle = this.toggle.bind(this);
 		this.returnBoard = this.returnBoard.bind(this);
+		this.searchBarFlag = this.searchBarFlag.bind(this);
+		this.onChange = this.onChange.bind(this);
+
 
 		this.state = {
-			modal: false
+			leftDashFlag: false,
+			searchFlag: false,
+			searchValue: ''
 		}
 	}
 
-	componentWillMount() {
-		document.addEventListener("click", () => {
-			const regex = /change/;
-			const searchId = document.getElementById('card-search');
-			if (regex.test(searchId.getAttribute('class'))) {
-				searchId.classList.remove('change');
-				document.getElementById('search-icon').classList.remove('hidden');
-				document.getElementById('times-icon').classList.add('hidden');
-				document.getElementById('arrow-up').classList.add('hidden');
-			}
+	componentWillReceiveProps(newProps) {
+
+		// if (this.state.leftDashFlag !== false) {
+		// 	this.setState({
+		// 		leftDashFlag: newProps.windowFlag.windowFlag
+		// 	});
+		// }
+
+		if (this.state.searchFlag !== false) {
+			this.setState({
+				searchFlag: newProps.windowFlag.windowFlag,
+				searchValue: ''
+			});
+		}
+
+	}
+
+	searchBarFlag() {
+		if (!this.state.searchFlag) {
+			this.setState({
+				searchFlag: !this.state.searchFlag
+			});
+		}
+		
+	}
+
+	onChange(e) {
+		this.setState({
+			searchValue: e.target.value
 		});
-	}
-
-	cardSearch() {
-		document.getElementById('card-search').classList.add("change");
-		document.getElementById('search-icon').classList.add('hidden');
-		document.getElementById('times-icon').classList.remove('hidden');
-		document.getElementById('arrow-up').classList.remove('hidden');
-	}
-
-	CloseSearch() {
-		document.getElementById('card-search').classList.remove('change');
-		document.getElementById('search-icon').classList.remove('hidden');
-		document.getElementById('times-icon').classList.add('hidden');
-		document.getElementById('arrow-up').classList.add('hidden');
 	}
 
 	toggle() {
 		this.setState({
-			modal: !this.state.modal
+			leftDashFlag: !this.state.leftDashFlag
 		});
 	}
 
@@ -71,10 +81,31 @@ export default class Navbar extends Component {
 						<Globtn toggle={this.toggle} value="Boards" bkcolor="hsla(0,0%,100%,.3)" color="#fff" fab={true} type="trello" size="32" iconsize="16px" borderRadius="3" spanLeft="9px" />
 						
 						<div className="card-search" style={{zIndex: 10}}>
-							<input onClick={this.cardSearch} id="card-search" type="text" className="card-search" />
-							<MDBIcon id="search-icon" className="search-icon" icon="search" />
-							<MDBIcon onClick={this.CloseSearch} id="times-icon" className="hidden times-icon" icon="times" />
-							<MDBIcon id="arrow-up" className="hidden arrow-up" icon="long-arrow-alt-up" />
+							{
+								(!this.state.searchFlag) ?
+									<>
+										<input
+										onClick={this.searchBarFlag}
+										onChange={this.onChange}
+										value={this.state.searchValue}
+										id="card-search"
+										type="text"
+										className="card-search"
+										/>
+										<MDBIcon id="search-icon" className="search-icon" icon="search" />
+										<MDBIcon onClick={this.searchBarFlag} id="times-icon" className="hidden times-icon" icon="times" />
+										<MDBIcon id="arrow-up" className="hidden arrow-up" icon="long-arrow-alt-up" />
+									</>
+								:
+									<>
+										<input onClick={this.searchBarFlag} id="card-search" type="text" className="card-search change" />
+										<MDBIcon id="search-icon" className="hidden search-icon" icon="search" />
+										<MDBIcon onClick={this.searchBarFlag} id="times-icon" className="times-icon" icon="times" />
+										<MDBIcon id="arrow-up" className="arrow-up" icon="long-arrow-alt-up" />
+									</>
+							}	
+
+							
 						</div>
 					</MDBNavbarNav>
 					<img onClick={this.returnBoard} className="board-logo" src={trelloImg} height="30px" />
@@ -86,7 +117,7 @@ export default class Navbar extends Component {
 					</MDBNavbarNav>
 				</MDBNavbar>
 				{
-					(this.state.modal) ?
+					(this.state.leftDashFlag) ?
 						<BoardsModal toggle={this.toggle} />
 					:
 					<div className="hidden"></div>
@@ -95,3 +126,9 @@ export default class Navbar extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+  windowFlag: state.windowFlag
+});
+
+export default connect(mapStateToProps)(Navbar);

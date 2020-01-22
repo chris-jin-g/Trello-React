@@ -41,11 +41,6 @@ input.card-search {
 	width: 380px !important;
 	background-color: #fff !important;
 }
-input.card-search:focus {
-	padding-right: 54px !important;
-	width: 380px !important;
-	background-color: #fff !important;
-}
 .hidden {
 	display: none !important;
 	visibility: hidden;
