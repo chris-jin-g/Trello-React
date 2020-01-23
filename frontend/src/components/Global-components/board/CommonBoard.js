@@ -7,6 +7,7 @@ import { changeStarred, recentedUpdate,
 
 
 // Import imgs and components for this
+import '../Modals/Modals.css';
 
 
 class CommonBoard extends Component {
@@ -21,44 +22,63 @@ class CommonBoard extends Component {
 			boardid: '',
 			bk: '',
 			url: '',
-			starred: false
+			starred: false,
+			hover: true,
+			right: '',
+			recented: false
 		}
 
 	}
 
 	componentWillMount() {
-		if (this.props.starred) {
+		if (this.props.clicked) {
 			this.setState({
+				clicked: this.props.clicked,
 				color: 'yellow',
+				right: '10px',
 				boardid: this.props.boardid,
+				hover: false,
 				bk: this.props.bk,
 				starred: this.props.starred,
-				url: parseInt(this.props.boardid)+1
+				url: parseInt(this.props.boardid)+1,
+				recented: this.props.recented
 			});
 		} else {
 			this.setState({
-				color: 'grey',
+				clicked: this.props.clicked,
+				color: '',
 				boardid: this.props.boardid,
 				bk: this.props.bk,
 				starred: this.props.starred,
-				url: parseInt(this.props.boardid)+1
+				url: parseInt(this.props.boardid)+1,
+				recented: this.props.recented
 			});
 		}
 		
 	}
 
 	componentWillReceiveProps(newProps) {
-		if (newProps.starred) {
+		if (newProps.clicked) {
 			this.setState({
+				clicked: this.props.clicked,
 				color: 'yellow',
+				right: '10px',
+				hover: false,
 				boardid: this.props.boardid,
-				bk: this.props.bk
+				bk: this.props.bk,
+				starred: newProps.starred,
+				recented: this.props.recented
 			});
 		} else {
 			this.setState({
-				color: 'grey',
+				clicked: this.props.clicked,
+				color: '',
+				right: '',
+				hover: true,
 				boardid: this.props.boardid,
 				bk: this.props.bk,
+				starred: newProps.starred,
+				recented: this.props.recented
 			});
 		}
 		
@@ -67,8 +87,12 @@ class CommonBoard extends Component {
 	changeStar() {
 		if (this.state.starred) {
 			this.setState({
-				color: "grey",
-				starred: !this.state.starred
+				color: "",
+				right: '',
+				hover: true,
+				clicked: !this.state.clicked,
+				starred: !this.state.starred,
+				recented: !this.state.recented
 			});
 			const data = {
 				boardid: this.state.boardid,
@@ -78,7 +102,11 @@ class CommonBoard extends Component {
 		} else {
 			this.setState({
 				color: 'yellow',
-				starred: !this.state.starred
+				right: '10px',
+				hover: false,
+				clicked: !this.state.clicked,
+				starred: !this.state.starred,
+				recented: !this.state.recented
 			});
 			const data = {
 				boardid: this.state.boardid,
@@ -106,26 +134,45 @@ class CommonBoard extends Component {
 		const regex = /^http/;
 		const iconStyle = {
 			color: `${this.state.color}`,
+			right: `${this.state.right}`,
 		}
 		return (
 			<div className="link-panel">
 				{
 					(regex.test(this.state.bk)) ?
-						<>
-							<MDBLink to={'/b/'+this.state.url} onClick={this.toMainBoard} className="link-board" style={{backgroundImage: `url(${this.state.bk})`}}>
-							</MDBLink>
-							<div className="board-img" style={{backgroundImage: `url(${this.state.bk})`}}></div>
-							<span>{this.props.title}</span>
-							<MDBIcon onClick={this.changeStar} className="board-icon" icon="star" style={iconStyle} />
-						</>
+						(this.state.hover == true)?
+							<>
+								<MDBLink to={'/b/'+this.state.url} onClick={this.toMainBoard} className="link-board" style={{backgroundImage: `url(${this.state.bk})`}}>
+								</MDBLink>
+								<div className="board-img" style={{backgroundImage: `url(${this.state.bk})`}}></div>
+								<span>{this.props.title}</span>
+								<MDBIcon onClick={this.changeStar} className="board-icon move-icon" icon="star" style={iconStyle} />
+							</>
+						:
+							<>
+								<MDBLink to={'/b/'+this.state.url} onClick={this.toMainBoard} className="link-board" style={{backgroundImage: `url(${this.state.bk})`}}>
+								</MDBLink>
+								<div className="board-img" style={{backgroundImage: `url(${this.state.bk})`}}></div>
+								<span>{this.props.title}</span>
+								<MDBIcon onClick={this.changeStar} className="board-icon" icon="star" style={iconStyle} />
+							</>
 					:
-						<>
-							<MDBLink to={'/b/'+this.state.url} onClick={this.toMainBoard} className="link-board" style={{backgroundColor: `${this.state.bk}`}}>
-							</MDBLink>
-							<div className="board-img" style={{backgroundColor: `${this.state.bk}`}}></div>
-							<span>{this.props.title}</span>
-							<MDBIcon onClick={this.changeStar} className="board-icon" icon="star" style={iconStyle} />
-						</>
+						(this.state.hover == true)?
+							<>
+								<MDBLink to={'/b/'+this.state.url} onClick={this.toMainBoard} className="link-board" style={{backgroundColor: `${this.state.bk}`}}>
+								</MDBLink>
+								<div className="board-img" style={{backgroundColor: `${this.state.bk}`}}></div>
+								<span>{this.props.title}</span>
+								<MDBIcon onClick={this.changeStar} className="board-icon move-icon" icon="star" style={iconStyle} />
+							</>
+						:
+							<>
+								<MDBLink to={'/b/'+this.state.url} onClick={this.toMainBoard} className="link-board" style={{backgroundColor: `${this.state.bk}`}}>
+								</MDBLink>
+								<div className="board-img" style={{backgroundColor: `${this.state.bk}`}}></div>
+								<span>{this.props.title}</span>
+								<MDBIcon onClick={this.changeStar} className="board-icon" icon="star" style={iconStyle} />
+							</>
 				}
 					
 			</div>

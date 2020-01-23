@@ -160,15 +160,15 @@ class BoardsModal extends Component {
 		// Insert searchBoard
 		const boards = this.state.boards;
 		let searchBoard= [];
-		let searchValue = this.state.searchValue;
-		let regex = `/^${searchValue}|${searchValue}.|.${searchValue}/`;
-		
+		let searchValue = e.target.value;
+		let regex = new RegExp("^"+searchValue+"|"+searchValue+".|."+searchValue, "i");
 		boards.map(board => {
 			if (regex.test(board.title)) {
 				searchBoard.push(board);
 			}	
 		});
 
+		console.log(searchBoard)
 		this.setState({
 			searchBoard: searchBoard
 		});
@@ -176,7 +176,9 @@ class BoardsModal extends Component {
 	}
 
 	render() {
-		const { starredBoard, boards, theme, recentedBoard } = this.state;
+		const { starredBoard, boards, theme, recentedBoard, searchBoard } = this.state;
+		console.log("searchBoard")
+		console.log(searchBoard)
 		const regex = /bk/;
 		return (
 			<div className="boards-modal">
@@ -190,148 +192,165 @@ class BoardsModal extends Component {
 
 				{
 					(this.state.searchValue == '') ?
-						{/*Starred boards*/}
-							<BoardsTitle compareKey="star" title="starred boards" icon="star" />
-							{
-								(this.state.starToggleFlag) ?
-									(starredBoard.length !== 0) ?
-										<div className="each-area">
-											{
-												starredBoard.map((value, i) => {
-													if (regex.test(value.themeTitle)) {
-														return theme[1].map(data => {
-															if (value.themeTitle.substring(2) == data.no) {
-																return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.url} />
-															}
-														})
-													} else {
-														return theme[0].map(data => {
-															if (value.themeTitle.substring(2) == data.no) {
-																return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.color} />
+						<>
+							{/*Starred boards*/}
+								<BoardsTitle compareKey="star" title="starred boards" icon="star" />
+								{
+									(this.state.starToggleFlag) ?
+										(starredBoard.length !== 0) ?
+											<div className="each-area">
+												{
+													starredBoard.map((value, i) => {
+														if (regex.test(value.themeTitle)) {
+															return theme[1].map(data => {
+																if (value.themeTitle.substring(2) == data.no) {
+																	return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.url} clicked={value.starred} />
+																}
+															})
+														} else {
+															return theme[0].map(data => {
+																if (value.themeTitle.substring(2) == data.no) {
+																	return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.color} clicked={value.starred} />
+																}
+															})
+														}
+													})
+												}	
+
+											</div>
+										:
+											<div className="starred-empty">
+												Star your most important boards to keep them right at your fingertips.
+											</div>
+									:
+										<div className="hidden"></div>
+								}
+
+							{/*Recented boards*/}
+								{
+									(boards.length !== starredBoard.length) ?
+									<>
+										<BoardsTitle compareKey="recent" title="recent boards" icon="clock" />
+										{
+											(this.state.recentToggleFlag) ?
+												<div className="each-area">
+													{
+														recentedBoard.map((value, i) => {
+															if (!value.starred) {
+																if (regex.test(value.themeTitle)) {
+																	return theme[1].map(data => {
+																		if (value.themeTitle.substring(2) == data.no) {
+																			return <CommonBoard recented={true} starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.url} clicked={value.starred} />
+																		}
+																	})
+																} else {
+																	return theme[0].map(data => {
+																		if (value.themeTitle.substring(2) == data.no) {
+																			return <CommonBoard recented={true} starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.color} clicked={value.starred} />
+																		}
+																	})
+																}
 															}
 														})
 													}
-												})
-											}	
-
-										</div>
+												</div>
+											:
+												<div className="hidden"></div>
+										}	
+											
+									</>
 									:
-										<div className="starred-empty">
-											Star your most important boards to keep them right at your fingertips.
-										</div>
-								:
-									<div className="hidden"></div>
-							}
-
-						{/*Recented boards*/}
-							{
-								(boards.length !== starredBoard.length) ?
-								<>
-									<BoardsTitle compareKey="recent" title="recent boards" icon="clock" />
+										<div className="hidden"></div>
+								}
+								
+							{/*Personal boards*/}
+								<BoardsTitle compareKey="person" title="Personal boards" icon="user" />
 									{
-										(this.state.recentToggleFlag) ?
+										(this.state.personToggleFlag) ?
 											<div className="each-area">
 												{
-													recentedBoard.map((value, i) => {
-														if (!value.starred) {
-															if (regex.test(value.themeTitle)) {
-																return theme[1].map(data => {
-																	if (value.themeTitle.substring(2) == data.no) {
-																		return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.url} />
-																	}
-																})
-															} else {
-																return theme[0].map(data => {
-																	if (value.themeTitle.substring(2) == data.no) {
-																		return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.color} />
-																	}
-																})
-															}
+													boards.map((value, i) => {
+														if(regex.test(value.themeTitle)) {
+															return theme[1].map(data => {
+																if (value.themeTitle.substring(2) == data.no) {
+																	return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} clicked={value.starred} />
+																}
+															})
+														} else {
+															return theme[0].map(data => {
+																if (value.themeTitle.substring(2) == data.no) {
+																	return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} clicked={value.starred} />
+																}
+															})
 														}
 													})
 												}
 											</div>
 										:
 											<div className="hidden"></div>
-									}	
-										
-								</>
-								:
-									<div className="hidden"></div>
-							}
-							
-						{/*Personal boards*/}
-							<BoardsTitle compareKey="person" title="Personal boards" icon="user" />
-								{
-									(this.state.personToggleFlag) ?
-										<div className="each-area">
-											{
-												boards.map((value, i) => {
-													if(regex.test(value.themeTitle)) {
-														return theme[1].map(data => {
-															if (value.themeTitle.substring(2) == data.no) {
-																return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} />
-															}
-														})
-													} else {
-														return theme[0].map(data => {
-															if (value.themeTitle.substring(2) == data.no) {
-																return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} />
-															}
-														})
-													}
-												})
-											}
-										</div>
-									:
-										<div className="hidden"></div>
-								}
+									}
+						</>
 					:
 						(this.state.searchBoard.length !== 0) ?
-							{/*Search board*/}
-						<div className="each-area">
-							{
-								searchBoard.map((value, i) => {
-									if(regex.test(value.themeTitle)) {
-										return theme[1].map(data => {
-											if (value.themeTitle.substring(2) == data.no) {
-												return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} />
-											}
-										})
-									} else {
-										return theme[0].map(data => {
-											if (value.themeTitle.substring(2) == data.no) {
-												return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} />
-											}
-										})
-									}
-								})
-							}
-						</div>
+							<>
+								{/*Search board*/}
+									<div className="each-area">
+										{
+											searchBoard.map((value, i) => {
+												if(regex.test(value.themeTitle)) {
+													return theme[1].map(data => {
+														if (value.themeTitle.substring(2) == data.no) {
+															return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} clicked={value.starred} />
+														}
+													})
+												} else {
+													return theme[0].map(data => {
+														if (value.themeTitle.substring(2) == data.no) {
+															return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} clicked={value.starred} />
+														}
+													})
+												}
+											})
+										}
+									</div>
+									<MDBLink className="other-link">
+										<span>
+											Create board named “{this.state.searchValue}”
+										</span>
+									</MDBLink>
+									</>
 						:
 							<MDBLink className="other-link">
 								<span>
-									Create new board…
+									Create board named “{this.state.searchValue}”
 								</span>
 							</MDBLink>
 				}
 						
 				{/*Other functionality*/}
-					<MDBLink className="other-link">
-						<span>
-							Create new board…
-						</span>
-					</MDBLink>
-					<MDBLink className="other-link">
-						<span>
-							Always keep this menu open.
-						</span>
-					</MDBLink>
-					<MDBLink className="other-link">
-						<span>
-							See closed boards…
-						</span>
-					</MDBLink>
+					{
+						(this.state.searchValue == '') ?
+							<>
+								<MDBLink className="other-link">
+									<span>
+										Create new board…
+									</span>
+								</MDBLink>
+								<MDBLink className="other-link">
+									<span>
+										Always keep this menu open.
+									</span>
+								</MDBLink>
+								<MDBLink className="other-link">
+									<span>
+										See closed boards…
+									</span>
+								</MDBLink>
+							</>
+						:
+							<div className="hidden"></div>
+					}
+						
 			</div>
 		);
 	}

@@ -42,21 +42,23 @@ button:hover {
 .icon-hover:hover .icon-star {
 	animation-name: LeftStar;
 	animation-duration: .3s;
-	right: 6px;
+	right: 14px;
 }
 .icon-star {
 	display: contents;
 	position: absolute;
 	right: -35px;
-	bottom: 10px;
-	color: white;
-	font-size: 16px;
+	bottom: 13px !important;
+	color: #fff;
+	opacity: .8;
+	font-size: 12px;
 	font-weight: 500 !important;
 }
 .icon-star:hover {
 	animation-duration: .3s;
-	animation-name: Zoomout;
+	animation-name: ZoomoutAndChangeOpacity;
 	transform: scale(1.2);
+	opacity: 1;
 }
 .mod-add {
 	text-align: center;
@@ -264,10 +266,10 @@ button:hover {
 
 @keyframes LeftStar {
 	0% {right: -35px;}
-	100% {right: 6px}
+	100% {right: 14px}
 }
 
-@keyframes Zoomout {
-	0% {transform: scale(1);}
-	100% {transform: scale(1.2);}
+@keyframes ZoomoutAndChangeOpacity {
+	0% {transform: scale(1); opacity: .8;}
+	100% {transform: scale(1.2); opacity: 1;}
 }

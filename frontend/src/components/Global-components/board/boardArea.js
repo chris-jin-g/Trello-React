@@ -34,7 +34,7 @@ class BoardArea extends Component {
 			this.setState({
 				clicked: this.props.clicked,
 				color: 'yellow',
-				right: '6px',
+				right: '14px',
 				hover: false,
 				boardid: this.props.boardid,
 				starred: true,
@@ -56,7 +56,7 @@ class BoardArea extends Component {
 			this.setState({
 				clicked: newProps.starred,
 				color: 'yellow',
-				right: '6px',
+				right: '14px',
 				hover: false,
 				boardid: newProps.boardid,
 				starred: true,
@@ -93,7 +93,7 @@ class BoardArea extends Component {
 		} else {
 			this.setState({
 				color: 'yellow',
-				right: '6px',
+				right: '14px',
 				hover: false,
 				clicked: !this.state.clicked,
 				starred: !this.state.starred

@@ -2,7 +2,7 @@
 	position: fixed;
 	top: 44px;
 	bottom: auto;
-	height: calc(100% - 48px);
+	max-height: calc(100% - 48px);
 	width: 280px;
 	z-index: 20;
 	box-shadow: 0 12px 24px -6px rgba(9,30,66,.25),0 0 0 1px rgba(9,30,66,.08);
@@ -126,6 +126,7 @@
 	margin: 0 4px 4px 0;
 	min-width: 0;
 	cursor: pointer;
+	overflow: hidden;
 }
 .link-panel:hover .link-board {
 	transform: none;
@@ -163,12 +164,20 @@
 	z-index: 10;
 }
 .board-icon {
-	color: yellow;
+	color: #42526e;
+	opacity: .8;
 	position: absolute;
-	right: 10px;
-	top: 12px;
-	font-size: 14px !important;
+	right: -25px;
+	top: 14px;
+	font-size: 12px !important;
 	font-weight: 500 !important;
+}
+.board-icon:hover {
+	animation-duration: .3s;
+	animation-name: ZoomoutAndChangeOpacityColor;
+	color: #42526e !important;
+	transform: scale(1.2);
+	opacity: 1;
 }
 .other-link {
 	box-shadow: none;
@@ -195,4 +204,20 @@
 	color: #7a869a;
 	padding: 16px 30px 10px 31px;
 	font-size: 14px !important;
+}
+.link-panel:hover .move-icon {
+	animation-name: moveStar;
+	animation-duration: .3s;
+	right: 10px;
+}
+
+
+@keyframes moveStar {
+	0% {right: -25px;}
+	100% {right: 10px}
+}
+
+@keyframes ZoomoutAndChangeOpacityColor {
+	0% {transform: scale(1); opacity: .8;}
+	100% {transform: scale(1.2); opacity: 1; color: #42526e;}
 }
