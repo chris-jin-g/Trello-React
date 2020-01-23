@@ -18,7 +18,7 @@ import toggleFlag from './toggleFlag.reducer';
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['user', 'theme', 'compareBoardId']
+	whitelist: ['user', 'theme']
 }
 
 

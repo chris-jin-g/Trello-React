@@ -15,15 +15,19 @@ class BoardsModal extends Component {
 	constructor(props) {
 		super(props);
 
+		this.onSearch = this.onSearch.bind(this);
+
 		this.state = {
 			id: '',
 			boards: {},
 			theme: {},
 			starredBoard: {},
 			recentedBoard: {},
+			searchBoard: {},
 			starToggleFlag: true,
 			recentToggleFlag: true,
-			personToggleFlag: true
+			personToggleFlag: true,
+			searchValue: ''
 		}
 
 	}
@@ -43,7 +47,7 @@ class BoardsModal extends Component {
 				recentedBoard.push(value);
 				compareKey = value.recented;
 			} else {
-				flag = false;
+				let flag = false;
 				recentedBoard.map((data, key) => {
 					if (data.recented > value.recented && flag == false) {
 						recentedBoard.splice(key, 0, value);
@@ -54,7 +58,7 @@ class BoardsModal extends Component {
 			
 		});
 		
-		// Updata starred of boards
+		// Update starred of boards
 		boards.map((value, i) => {
 			if (value.boardid == newState.boardid) {
 				value.starred = newState.starStatus;
@@ -83,7 +87,6 @@ class BoardsModal extends Component {
 		const starredBoard = this.state.starredBoard;
 		const boards = this.state.boards;
 		const newBoards = newProps.user.user.boards;
-		console.log(newProps.windowFlag)
 		
 		// Update starredBoard
 		if (newProps.starredStatus.starStatus == true) {
@@ -117,7 +120,7 @@ class BoardsModal extends Component {
 				recentedBoard.push(value);
 				compareKey = value.recented;
 			} else {
-				flag = false;
+				let flag = false;
 				recentedBoard.map((data, key) => {
 					if (data.recented > value.recented && flag == false) {
 						recentedBoard.splice(key, 0, value);
@@ -127,6 +130,7 @@ class BoardsModal extends Component {
 			}
 			
 		});
+
 		this.setState({
 			recentedBoard: recentedBoard
 		});
@@ -148,60 +152,52 @@ class BoardsModal extends Component {
 
 	}
 
+	onSearch(e) {
+		this.setState({
+			searchValue: e.target.value
+		});
+		console.log("Search")
+		// Insert searchBoard
+		const boards = this.state.boards;
+		let searchBoard= [];
+		let searchValue = this.state.searchValue;
+		let regex = `/^${searchValue}|${searchValue}.|.${searchValue}/`;
+		
+		boards.map(board => {
+			if (regex.test(board.title)) {
+				searchBoard.push(board);
+			}	
+		});
+
+		this.setState({
+			searchBoard: searchBoard
+		});
+		
+	}
+
 	render() {
 		const { starredBoard, boards, theme, recentedBoard } = this.state;
 		const regex = /bk/;
 		return (
 			<div className="boards-modal">
-				<input className="search-boards" type="text" placeholder="Find boards by name…" />
+				<input
+				value={this.state.searchValue}
+				onChange={this.onSearch}
+				className="search-boards"
+				type="text"
+				placeholder="Find boards by name…"
+				autoFocus/>
 
-				{/*Starred boards*/}
-					<BoardsTitle compareKey="star" title="starred boards" icon="star" />
-					
-					{
-						(this.state.starToggleFlag) ?
-							(starredBoard.length !== 0) ?
-								<div className="each-area">
-									{
-										starredBoard.map((value, i) => {
-											if (regex.test(value.themeTitle)) {
-												return theme[1].map(data => {
-													if (value.themeTitle.substring(2) == data.no) {
-														return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.url} />
-													}
-												})
-											} else {
-												return theme[0].map(data => {
-													if (value.themeTitle.substring(2) == data.no) {
-														return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.color} />
-													}
-												})
-											}
-										})
-									}	
-
-								</div>
-							:
-								<div className="starred-empty">
-									Star your most important boards to keep them right at your fingertips.
-								</div>
-						:
-							<div className="hidden"></div>
-					}
-
-					
-					
-				{/*Recented boards*/}
-					{
-						(boards.length !== starredBoard.length) ?
-						<>
-							<BoardsTitle compareKey="recent" title="recent boards" icon="clock" />
+				{
+					(this.state.searchValue == '') ?
+						{/*Starred boards*/}
+							<BoardsTitle compareKey="star" title="starred boards" icon="star" />
 							{
-								(this.state.recentToggleFlag) ?
-									<div className="each-area">
-										{
-											recentedBoard.map((value, i) => {
-												if (!value.starred) {
+								(this.state.starToggleFlag) ?
+									(starredBoard.length !== 0) ?
+										<div className="each-area">
+											{
+												starredBoard.map((value, i) => {
 													if (regex.test(value.themeTitle)) {
 														return theme[1].map(data => {
 															if (value.themeTitle.substring(2) == data.no) {
@@ -215,45 +211,110 @@ class BoardsModal extends Component {
 															}
 														})
 													}
-												}
-											})
-										}
-									</div>
+												})
+											}	
+
+										</div>
+									:
+										<div className="starred-empty">
+											Star your most important boards to keep them right at your fingertips.
+										</div>
 								:
 									<div className="hidden"></div>
-							}	
-								
-						</>
-						:
-							<div className="hidden"></div>
-					}
-					
-				{/*Personal boards*/}
-					<BoardsTitle compareKey="person" title="Personal boards" icon="user" />
-						{
-							(this.state.personToggleFlag) ?
-								<div className="each-area">
+							}
+
+						{/*Recented boards*/}
+							{
+								(boards.length !== starredBoard.length) ?
+								<>
+									<BoardsTitle compareKey="recent" title="recent boards" icon="clock" />
 									{
-											boards.map((value, i) => {
-												if(regex.test(value.themeTitle)) {
-													return theme[1].map(data => {
-														if (value.themeTitle.substring(2) == data.no) {
-															return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} />
-														}
-													})
-												} else {
-													return theme[0].map(data => {
-														if (value.themeTitle.substring(2) == data.no) {
-															return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} />
+										(this.state.recentToggleFlag) ?
+											<div className="each-area">
+												{
+													recentedBoard.map((value, i) => {
+														if (!value.starred) {
+															if (regex.test(value.themeTitle)) {
+																return theme[1].map(data => {
+																	if (value.themeTitle.substring(2) == data.no) {
+																		return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.url} />
+																	}
+																})
+															} else {
+																return theme[0].map(data => {
+																	if (value.themeTitle.substring(2) == data.no) {
+																		return <CommonBoard starred={value.starred} title={value.title}  boardid={value.boardid} bk={data.color} />
+																	}
+																})
+															}
 														}
 													})
 												}
-											})
-										}
-								</div>
-							:
-								<div className="hidden"></div>
-						}
+											</div>
+										:
+											<div className="hidden"></div>
+									}	
+										
+								</>
+								:
+									<div className="hidden"></div>
+							}
+							
+						{/*Personal boards*/}
+							<BoardsTitle compareKey="person" title="Personal boards" icon="user" />
+								{
+									(this.state.personToggleFlag) ?
+										<div className="each-area">
+											{
+												boards.map((value, i) => {
+													if(regex.test(value.themeTitle)) {
+														return theme[1].map(data => {
+															if (value.themeTitle.substring(2) == data.no) {
+																return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} />
+															}
+														})
+													} else {
+														return theme[0].map(data => {
+															if (value.themeTitle.substring(2) == data.no) {
+																return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} />
+															}
+														})
+													}
+												})
+											}
+										</div>
+									:
+										<div className="hidden"></div>
+								}
+					:
+						(this.state.searchBoard.length !== 0) ?
+							{/*Search board*/}
+						<div className="each-area">
+							{
+								searchBoard.map((value, i) => {
+									if(regex.test(value.themeTitle)) {
+										return theme[1].map(data => {
+											if (value.themeTitle.substring(2) == data.no) {
+												return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.url} />
+											}
+										})
+									} else {
+										return theme[0].map(data => {
+											if (value.themeTitle.substring(2) == data.no) {
+												return <CommonBoard starred={value.starred} title={value.title} boardid={value.boardid} bk={data.color} />
+											}
+										})
+									}
+								})
+							}
+						</div>
+						:
+							<MDBLink className="other-link">
+								<span>
+									Create new board…
+								</span>
+							</MDBLink>
+				}
 						
 				{/*Other functionality*/}
 					<MDBLink className="other-link">

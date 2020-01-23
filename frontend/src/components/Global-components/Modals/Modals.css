@@ -111,7 +111,6 @@
 	background-color: rgba(9,30,66,.08);
 }
 .link-board {
-	/*z-index: 10;*/
 	background-size: cover;
 	background-position: 50%;
 	width: 100%;
@@ -137,6 +136,7 @@
 	opacity: 1;
 }
 .link-panel span {
+	z-index: -1;
 	position: absolute;
 	top: 0;
 	left: 36px;
@@ -150,6 +150,7 @@
 	line-height: 20px !important;
 }
 .board-img {
+	z-index: -1;
 	display: inline-block;
 	flex: 0 0 auto;
 	background-size: cover;

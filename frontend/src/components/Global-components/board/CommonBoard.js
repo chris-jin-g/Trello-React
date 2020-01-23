@@ -58,7 +58,7 @@ class CommonBoard extends Component {
 			this.setState({
 				color: 'grey',
 				boardid: this.props.boardid,
-				bk: this.props.bk
+				bk: this.props.bk,
 			});
 		}
 		

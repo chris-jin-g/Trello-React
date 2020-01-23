@@ -46,7 +46,7 @@ class Boards extends Component {
 				recentedBoard.push(value);
 				compareKey = value.recented;
 			} else {
-				flag = false;
+				let flag = false;
 				recentedBoard.map((data, key) => {
 					if (data.recented > value.recented && flag == false) {
 						recentedBoard.splice(key, 0, value);
@@ -119,7 +119,7 @@ class Boards extends Component {
 				recentedBoard.push(value);
 				compareKey = value.recented;
 			} else {
-				flag = false;
+				let flag = false;
 				recentedBoard.map((data, key) => {
 					if (data.recented > value.recented && flag == false) {
 						recentedBoard.splice(key, 0, value);
