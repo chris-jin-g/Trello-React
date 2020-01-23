@@ -9,6 +9,8 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
+  const { user, boardCollection } = state;
+
   switch (action.type) {
     case types.LOG_IN_SUCCESS:
       return {
@@ -58,6 +60,47 @@ export default function(state = initialState, action) {
       return {
         ...state
       }
+    case types.CREATE_NEW_BOARD:
+      console.log("CREATE_NEW_BOARD")
+      console.log(action.payload)
+      console.log(user)
+      const regex = /^http/;
+      let newBoardId = '';
+      let newThemeTitle = '';
+      let newBoardArea = [];
+      
+      // Make newBoardId
+        newBoardId += user.boards.length;
+
+      // Make newThemeTitle
+      if (regex.test(action.payload.bk)) {
+        newThemeTitle += 'bk' + action.payload.createBkId;
+      } else {
+        newThemeTitle += 'bc' + action.payload.createBkId;
+      }
+
+      // Make newBoard
+      const newBoard= {
+        boardid: newBoardId,
+        recented: 1,
+        starred: false,
+        themeTitle: newThemeTitle,
+        title: action.payload.title
+      }
+
+      // Insert newBoard
+      user.boards.push(newBoard);
+
+      // Insert newBoardArea
+      boardCollection.boards.push(newBoardArea);
+      
+      // Update user board's recented
+      user.boards.filter((el, i) => i !== parseInt(newBoardId))
+        .map(data => {
+          console.log(data)
+          data.recented += 1;
+        })
+      return {...state}
     default:
       return state;
   }

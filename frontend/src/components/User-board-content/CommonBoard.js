@@ -39,6 +39,7 @@ class CommonBoard extends Component {
 		const compareKey = this.props.compareId.compareId;
 
 		console.log("CommomBoard")
+		console.log(boards)
 
 		boards.map((board, key) => {
 			if (board.boardid == compareKey) {
@@ -107,8 +108,7 @@ class CommonBoard extends Component {
 		const { boardContent, boardTitle, theme } = this.state;
 		console.log("render")
 		console.log(boardTitle)
-		console.log(boardContent)
-		console.log(this.state.showFlag)
+		
 		const regex = /bk/;
 		return (
 			<>	{

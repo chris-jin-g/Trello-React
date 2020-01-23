@@ -18,3 +18,7 @@ export const ADD_CARD = "ADD_CARD";
 export const RECENTED_UPDATE = "RECENTED_UPDATE";
 export const UPDATE_WINDOW_FLAG = "UPDATE_WINDOW_FLAG";
 export const TOGGLE_FLAG = "TOGGLE_FLAG";
+export const SET_COLOR = "SET_COLOR";
+export const CREATE_NEW_BOARD = "CREATE_NEW_BOARD";
+export const SAVE_CREATED_ID = "SAVE_CREATED_ID";
+export const SAVE_TOP_ID = "SAVE_TOP_ID";

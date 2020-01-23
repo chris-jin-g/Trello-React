@@ -11,6 +11,16 @@ export default function(state = initialState, action) {
       	...state,
       	compareId: action.payload.boardid
       };
+    case types.SAVE_CREATED_ID:
+      return {
+        ...state,
+        compareId: action.payload
+      }
+    case types.SAVE_TOP_ID:
+      return {
+        ...state,
+        compareId: action.payload
+      }
     default:
       return state;
   }

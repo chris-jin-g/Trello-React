@@ -3,7 +3,18 @@ button:hover {
 }
 .Mdblink {
 	padding: 0 !important;
+	margin-bottom: 4px;
+	display: block;
+	color: black;
 }
+.Mdblink:focus {
+	outline: none !important;
+}
+.clicked-link {
+	background-color: #e4f0f6 !important;
+	color: #0079bf !important;
+}
+
 .board-title {
 	background-color: #97a0af;
 	background-size: cover;

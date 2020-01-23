@@ -5,9 +5,9 @@
 	display: flex;
 }
 .create-board-title {
-	background: url('../../../../trello-images/trello-theme-img/theme2.jpg');
-	background-size: cover;
-	background-position: 50%;
+	background: url('../../../../trello-images/trello-theme-img/theme.jpg');
+	background-size: cover !important;
+	background-position: 50% !important;
 	background-color: #fff;
 	box-sizing: border-box;
 	height: 96px;
@@ -113,7 +113,6 @@
 	margin-bottom: 6px;
 }
 .theme-btn {
-	/*background: url('../../../../trello-images/trello-theme-img/theme2.jpg');*/
 	background-color: #fff;
 	background-position: 50% !important;
 	background-size: cover !important;
@@ -121,6 +120,11 @@
 	width: inherit;
 	border: none;
 	border-radius: 3px;
+	display: list-item;
+	height: 28px !important;
+}
+.theme-btn:focus {
+	outline: none;
 }
 .check-icon {
 	position: relative;

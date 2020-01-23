@@ -2,7 +2,9 @@ import * as types from '../constants/type-constant';
 
 const initialState = {
   reserveFlag: true,
-  compareKey: ''
+  compareKey: '',
+  bk: '',
+  bkId: ''
 }; 
 
 export default function(state = initialState, action) {
@@ -11,7 +13,9 @@ export default function(state = initialState, action) {
       return {
         ...state,
         reserveFlag: action.payload.flag,
-        compareKey: action.payload.compareKey
+        compareKey: action.payload.compareKey,
+        bk: action.payload.bk,
+        bkId: action.payload.bkId
       }
     default:
       return state;

@@ -26,6 +26,17 @@ class UserBoardContent extends Component {
 		});
 	}
 
+	componentWillReceiveProps(newProps) {
+		let count = [];
+		for (let i = 1; i <= newProps.user.user.boards.length; i++) {
+			count.push(i);
+		} 
+
+		this.setState({
+			boardnum: count
+		});
+	}
+
 	render() {
 		
 		return (

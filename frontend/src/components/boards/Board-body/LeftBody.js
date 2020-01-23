@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MDBListGroup, MDBListGroupItem } from "mdbreact";
+import { connect } from 'react-redux';
 
 
 // Import components for it
@@ -11,12 +12,12 @@ import Template_root from './template_root.json';
 
 const Roots = props => (
 	<MDBListGroupItem className="li-items">
-		<LinkBtn to={"/board/Templates/"+props.title.title} value={props.title.title} fontsize="14" color="black"  />		
+		<LinkBtn linkKey={props.title.title} compareKey={props.compareKey} to={"/board/Templates/"+props.title.title} value={props.title.title} fontsize="14" color="black"  />		
 	</MDBListGroupItem>
 );
 
 
-export default class LeftBody extends Component {
+class LeftBody extends Component {
 	constructor(props) {
 		super(props);
 		this.rootShow = this.rootShow.bind(this);
@@ -25,7 +26,11 @@ export default class LeftBody extends Component {
 		// this.onChange = this.onChange.bind(this);
 
 		this.state = {
-			roots: []
+			roots: [],
+			boardFlag: true,
+			templateFlag: false,
+			homeFlag: false,
+			compareKey: ''
 		}
 	}
 
@@ -35,9 +40,11 @@ export default class LeftBody extends Component {
 		});
 	}
 
-	// onChange() {
-	// 	this.setAttribute("color", "#0079bf")
-	// }
+	componentWillReceiveProps(newProps) {
+		this.setState({
+			compareKey: newProps.toggleFlag.compareKey
+		});
+	}
 
 	showRoot() {
 		document.getElementById('template_root').classList.remove("hidden")
@@ -49,7 +56,7 @@ export default class LeftBody extends Component {
 
 	rootShow() {
 		return this.state.roots.data.map(currentRoot => {
-			return <Roots title={currentRoot} />
+			return <Roots title={currentRoot} compareKey={this.state.compareKey} />
 		})
 	}
 
@@ -59,10 +66,10 @@ export default class LeftBody extends Component {
 				<div className="LeftBody">
 					<MDBListGroup style={{marginBottom: 12+"px"}}>
 						<MDBListGroupItem onClick={this.hiddenRoot} className="li-items">
-							<LinkBtn to="/board" fab icon="trello" value="Boards" bold={true} fontsize="14" color="#0079bf" bkColor="#e4f0f6" />
+							<LinkBtn linkKey="board" compareKey={this.state.compareKey} to="/board" fab icon="trello" value="Boards" bold={true} fontsize="14" color="#0079bf" bkColor="#e4f0f6" clicked={this.state.boardFlag} />
 						</MDBListGroupItem>
 						<MDBListGroupItem onClick={this.showRoot} className="li-items">
-							<LinkBtn to="/board/Templates" fab icon="trello" value="Templates" bold={true} fontsize="14" color="black"  />
+							<LinkBtn linkKey="template" compareKey={this.state.compareKey} to="/board/Templates" fab icon="trello" value="Templates" bold={true} fontsize="14" color="black" clicked={this.state.templateFlag}  />
 						</MDBListGroupItem>
 						
 						{/*Templates Roots*/}
@@ -72,7 +79,7 @@ export default class LeftBody extends Component {
 
 
 						<MDBListGroupItem onClick={this.hiddenRoot} className="li-items">
-							<LinkBtn to="/board" fab icon="trello" value="Home" bold={true} fontsize="14" color="black"  />
+							<LinkBtn linkKey="home" compareKey={this.state.compareKey} to="/board" fab icon="trello" value="Home" bold={true} fontsize="14" color="black" clicked={this.state.homeFlag}  />
 						</MDBListGroupItem>
 					</MDBListGroup>
 					<MDBListGroup>
@@ -89,3 +96,9 @@ export default class LeftBody extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+ toggleFlag: state.toggleFlag
+});
+
+export default connect(mapStateToProps)(LeftBody);

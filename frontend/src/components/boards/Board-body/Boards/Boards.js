@@ -3,6 +3,7 @@ import { MDBIcon } from 'mdbreact';
 import { MDBBtn, MDBModal, MDBModalFooter, MDBNavLink } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { createNewBoard, saveNewCreatedId } from '../../../../actions/user.action';
 
 
 // Import css and components for it
@@ -10,6 +11,7 @@ import './Boards.css';
 import '../ModalContent/Modal.css';
 import BoardArea from '../../../Global-components/board/boardArea';
 import CreateArea from '../../../Global-components/board/CreateArea';
+import CheckBtn from '../../../Global-components/board/checkBtn';
 
 
 class Boards extends Component {
@@ -18,6 +20,7 @@ class Boards extends Component {
 
 		this.toggle = this.toggle.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.createBoard = this.createBoard.bind(this);
 
 		global.i = 0;
 		this.state = {
@@ -25,10 +28,13 @@ class Boards extends Component {
 			boards: {},
 			starred: false,
 			starredBoard: {},
-			value: '',
+			newBoardTitle: '',
 			visible: false,
 			theme: {},
-			recentedBoard: {}
+			recentedBoard: {},
+			compareKey: '',
+			createBk: '',
+			createBkId: ''
 		}
 	}
 
@@ -82,6 +88,8 @@ class Boards extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
+		console.log("newProps")
+		console.log(newProps.toggleFlag.bk)
 
 		const starredBoard = this.state.starredBoard;
 		const boards = this.state.boards;
@@ -131,7 +139,10 @@ class Boards extends Component {
 		});
 
 		this.setState({
-			recentedBoard: recentedBoard
+			recentedBoard: recentedBoard,
+			compareKey: newProps.toggleFlag.compareKey,
+			createBk: newProps.toggleFlag.bk,
+			createBkId: newProps.toggleFlag.bkId
 		});
 
 	}
@@ -144,7 +155,7 @@ class Boards extends Component {
 
 	onChange(e) {
 		this.setState({
-			value: e.target.value
+			newBoardTitle: e.target.value
 		})
 		if (e.target.value !== '') {
 			this.setState({
@@ -157,9 +168,28 @@ class Boards extends Component {
 		}
 	}
 
+	createBoard() {
+		const data = {
+			title: this.state.newBoardTitle,
+			bk: this.state.createBk,
+			createBkId: this.state.createBkId
+		}
+		
+		// Save newCreateBoard id
+		this.props.saveNewCreatedId(this.state.boards.length);
+
+		// Create newBoard
+		this.props.createNewBoard(data);
+
+		// Go to newCreatedBoard
+		this.props.history.push('/b/'+this.state.boards.length);
+	}
+
 	render() {
 		const { starredBoard, boards, theme, recentedBoard } = this.state;
 		const regex = /bk/;
+		const createRegex = /^http/;
+		console.log(createRegex.test(this.state.createBk))
 		return (
 			<>
 				{/*Board*/}
@@ -269,54 +299,77 @@ class Boards extends Component {
 				    <div className="create-board-modal-header">
 						
 						{/*board title*/}
-						<div className="create-board-title">
-							
-							<button onClick={this.toggle} className="close-btn">
-								<MDBIcon icon="times" />
-							</button>
-							
-							<input
-							value={this.state.value}
-							onChange={this.onChange}
-							type="text"
-							placeholder="Add board title"
-							/>
-							
-							<div>
-								<button className="select-btn">
-									<span>No team</span>
-									<MDBIcon className="icon-sm" icon="angle-down" />
-								</button>
-								<button className="select-btn">
-									<MDBIcon className="icon-sm" icon="lock" />
-									<span>Private</span>
-									<MDBIcon className="icon-sm" icon="angle-down" />
-								</button>
-							</div>
-						</div>
+						{
+							(createRegex.test(this.state.createBk)) ?
+								<div className="create-board-title" style={{background: `url(${this.state.createBk})`}}>
+								
+									<button onClick={this.toggle} className="close-btn">
+										<MDBIcon icon="times" />
+									</button>
+									
+									<input
+									value={this.state.newBoardTitle}
+									onChange={this.onChange}
+									type="text"
+									placeholder="Add board title"
+									/>
+									
+									<div>
+										<button className="select-btn">
+											<span>No team</span>
+											<MDBIcon className="icon-sm" icon="angle-down" />
+										</button>
+										<button className="select-btn">
+											<MDBIcon className="icon-sm" icon="lock" />
+											<span>Private</span>
+											<MDBIcon className="icon-sm" icon="angle-down" />
+										</button>
+									</div>
+								</div>
+							:
+								<div className="create-board-title" style={{background: `${this.state.createBk}`}}>
+								
+									<button onClick={this.toggle} className="close-btn">
+										<MDBIcon icon="times" />
+									</button>
+									
+									<input
+									value={this.state.newBoardTitle}
+									onChange={this.onChange}
+									type="text"
+									placeholder="Add board title"
+									/>
+									
+									<div>
+										<button className="select-btn">
+											<span>No team</span>
+											<MDBIcon className="icon-sm" icon="angle-down" />
+										</button>
+										<button className="select-btn">
+											<MDBIcon className="icon-sm" icon="lock" />
+											<span>Private</span>
+											<MDBIcon className="icon-sm" icon="angle-down" />
+										</button>
+									</div>
+								</div>
+						}
 						
 						{/*Background themes*/}
 						<ul className="theme-area">
 							{
-								theme[1].slice(0, 4).map((theme, i) => {
-									return (
-										<li className="background-grid-item">
-											<button className="theme-btn" style={{background: `url(${theme.url})`}}>
-												<MDBIcon className="check-icon" icon="check" />
-											</button>
-										</li>
-									)
+								theme[1].slice(0, 1).map((theme, i) => {
+									return <CheckBtn checkKey={i + 1} bkId={i} compareKey={this.state.compareKey} clicked={true} bk={theme.url} />
+								})
+							}
+
+							{
+								theme[1].slice(4, 7).map((theme, i) => {
+									return <CheckBtn checkKey={i + 2} bkId={i + 4} compareKey={this.state.compareKey} bk={theme.url} />
 								})
 							}
 							{
 								theme[0].slice(0, 4).map((theme, i) => {
-									return (
-										<li className="background-grid-item">
-											<button className="theme-btn" style={{background: `${theme.color}`}}>
-												<MDBIcon className="check-icon" icon="check" />
-											</button>
-										</li>
-									)
+									return <CheckBtn checkKey={i + 5} bkId={i} compareKey={this.state.compareKey} bk={theme.color} />
 								})
 							}
 							
@@ -331,7 +384,7 @@ class Boards extends Component {
 				    <MDBModalFooter className="board-modal-footer">
 					    {
 					    	this.state.visible?
-					    	<button className="create-btn" color="light">
+					    	<button onClick={this.createBoard} className="create-btn" color="light">
 					    		<span>Create Board</span>
 					    	</button>
 					    	:
@@ -354,9 +407,15 @@ class Boards extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   starredStatus: state.starred,
-  theme: state.theme
+  theme: state.theme,
+  toggleFlag: state.toggleFlag
 });
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    createNewBoard,
+    saveNewCreatedId
+  }, dispatch);
+}
 
-
-export default connect(mapStateToProps)(Boards);
+export default connect(mapStateToProps, mapDispatchToProps)(Boards);

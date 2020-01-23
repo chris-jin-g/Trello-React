@@ -116,3 +116,24 @@ export function toggleFlag(data) {
 		payload: data
 	}
 }
+
+export function createNewBoard(data) {
+	return {
+		type: types.CREATE_NEW_BOARD,
+		payload: data
+	}
+}
+
+export function saveNewCreatedId(id) {
+	return {
+		type: types.SAVE_CREATED_ID,
+		payload: id
+	}
+}
+
+export function saveSearchTopId(id) {
+	return {
+		type: types.SAVE_TOP_ID,
+		payload: id
+	}
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { MDBLink, MDBIcon } from 'mdbreact';
+import { isEmpty } from "is-empty";
 
 
 // Import css and components for it
@@ -40,31 +41,34 @@ class ListBoard extends Component {
 		return (
 			<>
 				{	
-					boardContent.map((content, key) => {
-						return (
-							<div className="add-list-content">
-									<Title title={content.title} />
+					(boardContent.length !== 0) ?
+						boardContent.map((content, key) => {
+							return (
+								<div className="add-list-content">
+										<Title title={content.title} />
 
-								{/*add-list-titles*/}
-									{	
-										(content.parts.length !== 0) ?
-											content.parts.map(title => {
-												return <Card title={title} />
-											})
-										:
-											<div className="hidden"></div>
-									}
-									{
-										(content.parts.length !== 0) ?
-											<AddCardBody title="Add another card" boardid={this.state.boardid} boardAreaid={key} />
-										:
-											<AddCardBody title="Add a card" boardid={this.state.boardid} boardAreaid={key} />				 
-									}
-									
-									
-							</div>
-						)
-					})
+									{/*add-list-titles*/}
+										{	
+											(content.parts.length !== 0) ?
+												content.parts.map(title => {
+													return <Card title={title} />
+												})
+											:
+												<div className="hidden"></div>
+										}
+										{
+											(content.parts.length !== 0) ?
+												<AddCardBody title="Add another card" boardid={this.state.boardid} boardAreaid={key} />
+											:
+												<AddCardBody title="Add a card" boardid={this.state.boardid} boardAreaid={key} />				 
+										}
+										
+										
+								</div>
+							)
+						})
+					:
+						<div className="hidden"></div>
 				}
 			</>
 		);

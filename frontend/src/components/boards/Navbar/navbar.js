@@ -32,19 +32,12 @@ class Navbar extends Component {
 
 	componentWillReceiveProps(newProps) {
 
-		// if (this.state.leftDashFlag !== false) {
-		// 	this.setState({
-		// 		leftDashFlag: newProps.windowFlag.windowFlag
-		// 	});
-		// }
-
 		if (this.state.searchFlag !== false) {
 			this.setState({
 				searchFlag: newProps.windowFlag.windowFlag,
 				searchValue: ''
 			});
 		}
-
 	}
 
 	searchBarFlag() {

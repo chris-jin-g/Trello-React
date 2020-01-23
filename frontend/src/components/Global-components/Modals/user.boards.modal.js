@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MDBIcon, MDBLink } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { loginRequest } from '../actions/user.action';
+import { saveSearchTopId } from '../../../actions/user.action';
 
 
 // Import css and components for it
@@ -16,6 +16,7 @@ class BoardsModal extends Component {
 		super(props);
 
 		this.onSearch = this.onSearch.bind(this);
+		// this.goPage = this.goPage.bind(this);
 
 		this.state = {
 			id: '',
@@ -136,20 +137,23 @@ class BoardsModal extends Component {
 		});
 
 		// Check Flag star/recent/person
-		if (newProps.toggleFlag.compareKey == "star") {
-			this.setState({
-				starToggleFlag: newProps.toggleFlag.reserveFlag
-			});
-		} else if (newProps.toggleFlag.compareKey == "recent") {
-			this.setState({
-				recentToggleFlag: newProps.toggleFlag.reserveFlag
-			});
-		} else {
-			this.setState({
-				personToggleFlag: newProps.toggleFlag.reserveFlag
-			});
+		switch (newProps.toggleFlag.compareKey) {
+			case "star":
+				this.setState({
+					starToggleFlag: newProps.toggleFlag.reserveFlag
+				});
+				break;
+			case "recent":
+				this.setState({
+					recentToggleFlag: newProps.toggleFlag.reserveFlag
+				});
+				break;
+			case "person":
+				this.setState({
+					personToggleFlag: newProps.toggleFlag.reserveFlag
+				});
+				break;
 		}
-
 	}
 
 	onSearch(e) {
@@ -175,6 +179,35 @@ class BoardsModal extends Component {
 		
 	}
 
+	// goPage(e) {
+
+	// 	const aimBoard = this.state.searchBoard;
+	// 	let compareId = 0;
+
+	// 	if (Object.keys(aimBoard).length == 0) {
+	// 		return false;
+	// 	} else {
+	// 		aimBoard.map((data, i) => {
+	// 		if (i == 0) {
+	// 			compareId = data.boardid;
+	// 		}
+	// 	});
+	// 	}
+	// 	console.log("Enter")
+	// 	console.log(aimBoard)
+	// 	console.log(compareId)
+		
+
+	// 	// if (e.key == 'Enter') {
+	// 	// 	if (boards.length !== 0) {
+	// 	// 		// this.props.saveSearchTopId(compareId);
+	// 	// 		// alert(this.props.history)
+	// 	// 	} else {
+	// 	// 		return false;
+	// 	// 	}
+	// 	// }
+	// }
+
 	render() {
 		const { starredBoard, boards, theme, recentedBoard, searchBoard } = this.state;
 		console.log("searchBoard")
@@ -185,6 +218,7 @@ class BoardsModal extends Component {
 				<input
 				value={this.state.searchValue}
 				onChange={this.onSearch}
+				onKeyPress={this.goPage}
 				className="search-boards"
 				type="text"
 				placeholder="Find boards by name…"
@@ -363,10 +397,10 @@ const mapStateToProps = state => ({
   toggleFlag: state.toggleFlag
 });
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators({
-//     loginRequest
-//   }, dispatch);
-// }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    saveSearchTopId
+  }, dispatch);
+}
 
-export default connect(mapStateToProps)(BoardsModal);
+export default connect(mapStateToProps, mapDispatchToProps)(BoardsModal);
