@@ -46,6 +46,7 @@ class LinkBtn extends Component {
 			flag: true
 		}
 
+		// Change button color
 		this.props.toggleFlag(data);
 	}
 

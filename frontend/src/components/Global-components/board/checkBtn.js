@@ -47,7 +47,8 @@ class CheckBtn extends Component {
 		const data = {
 			compareKey: this.state.checkKey,
 			bk: this.state.bk,
-			bkId: this.state.bkId
+			bkId: this.state.bkId,
+			flag: true
 		}
 
 		this.props.toggleFlag(data);

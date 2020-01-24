@@ -1,0 +1,229 @@
+.template-board {
+	background: transparent;
+	margin-top: 40px;
+	width: 860px;
+	padding-left: 64px;
+	padding-right: 24px; 
+}
+.top-bar {
+	margin-top: 14px !important;
+	padding-right: 230px;
+	margin-top: -8px;
+	margin-left: -32px;
+	justify-content: space-between;
+	align-items: center;
+	display: flex;
+}
+.title-ul a {
+	font-size: 14px !important;
+	color: black;
+	line-height: 20px;
+	font-weight: 400;
+	padding: unset !important;
+}
+.title-ul {
+	padding-bottom: 32px !important;
+	padding-left: 32px !important;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.title-ul li {
+	float: left;
+}
+.after-li::after {
+	padding-left: 8px;
+	color: #dfe1e6;
+	content: "/";
+}
+.template-search-bar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding-bottom: 32px;
+}
+.feed-underline {
+	text-decoration: underline !important;
+	font-size: 12px ! important;
+	line-height: 16px;
+	display: block;
+	text-align: center;
+	color: #5e6c84;
+	margin-top: 0;
+	margin-left: 8px;
+	margin-right: 10px;
+	padding: unset !important;
+}
+.template-search {
+	position: relative;
+	max-width: 240px;
+	border: 1px solid #dfe1e6;
+	height: 32px;
+	min-width: 240px;
+	border-radius: 3px !important;
+	padding: 0 8px;
+	cursor: default;
+	display: flex;
+	flex-wrap: wrap;
+	-moz-box-pack: justify;
+	justify-content: space-between;
+	min-height: 38px;
+	outline: currentcolor none 0px !important;
+	position: relative;
+	transition: all 100ms ease 0s;
+	box-sizing: border-box;
+	-moz-box-align: center;
+	align-items: center;
+	background-color: rgb(255, 255, 255);
+}
+.search-input {
+	border: none;
+	font-size: 14px !important;
+	-moz-box-align: center;
+	align-items: center;
+	display: flex;
+	flex: 1 1 0%;
+	flex-wrap: wrap;
+	padding: 2px 8px;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.template-search-icon {
+	font-size: 16px !important;
+	height: 32px;
+	line-height: 32px;
+	width: 32px;
+	color: #42526e;
+	position: relative;
+}
+.template-search-icon::before {
+	position: absolute;
+	top: 8px;
+	left: 10px;
+}
+.template-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 6px;
+}
+.template-header h1 {
+	font-size: 20px !important;
+	font-weight: 600;
+	line-height: 24px;
+	color: #172b4d;
+	margin-bottom: 0;
+}
+.title-img {
+	background-image: url("https://a.trellocdn.com/prgb/dist/images/templates/category-sprite@2x.56e6839e477d82529dad.png");
+	background-position: -162px -756px;
+	background-size: 293px 1352px;
+	display: inline-block;
+	height: 48px;
+	width: 48px;
+	min-width: 48px;
+	margin-right: 12px;
+	border-radius: 3px;
+}
+.template-Main-body {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 31px;
+	max-width: 912px;
+	width: 100%;
+	justify-content: flex-start;
+}
+.template-card {
+	height: 269px;
+	width: 260px;
+	min-width: 260px;
+	margin-bottom: 24px;
+	margin-right: 22px;
+	position: relative;
+}
+.link-card {
+	display: block;
+	height: 269px;
+	width: 260px;
+	cursor: pointer;
+	text-decoration: none;
+	padding: unset !important;
+}
+.link-card-img {
+	background-image: url("https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x480/1413714ba3ce3a062cacb0512a5d5880/photo-1475694867812-f82b8696d610.jpg");
+	background-size: cover;
+	background-position: center center;
+	height: 132px;
+	border-radius: 3px;
+	position: relative;
+	width: auto;
+	cursor: pointer;
+}
+.link-card-title {
+	position: relative;
+	margin-top: -36px;
+	padding-left: 12px;
+	padding-bottom: 12px;
+	padding-right: 12px;
+	cursor: pointer;
+}
+.link-card-avatar {
+	background-image: url("https://trello-logos.s3.amazonaws.com/4a592184a5e8cf0a11cc64aaf24d8cc2/50.png");
+	height: 48px;
+	width: 48px;
+	line-height: 48px;
+	border-radius: 100%;
+	background-color: #fff;
+	border: 3px solid #fff;
+	box-shadow: 0 1px 1px rgba(9,45,66,.25);
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.link-card-title h2 {
+	margin-top: 12px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #172b4d;
+	font-weight: 700;
+	margin-bottom: 0;
+}
+.link-card-title span {
+	font-size: 12px !important;
+	line-height: 20px;
+	color: #6b778c;
+}
+.link-card-title p {
+	color: black;
+	font-size: 12px !important;
+	overflow: hidden;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	-moz-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	height: 40px;
+	margin-bottom: 0;
+}
+.opacity-div {
+	opacity: 0;
+	width: 100%;
+	height: 132px;
+	border-radius: 3px;
+	position: absolute;
+	box-shadow: 5px 4px 8px rgba(9,30,66,.25);
+	transition: opacity .2s ease-in-out;
+	width: 100%;
+	margin-top: -132px;
+}
+.opacity-div:hover {
+	animation-name: Opacity;
+	animation-duration: .3s;
+	opacity: 1;
+}
+
+
+@keyframes Opacity {
+	0% {opacity: 0;}
+	100% {opacity: 1;}
+}

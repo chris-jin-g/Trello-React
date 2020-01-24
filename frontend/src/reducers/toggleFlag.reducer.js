@@ -1,7 +1,7 @@
 import * as types from '../constants/type-constant';
 
 const initialState = {
-  reserveFlag: true,
+  reserveFlag: false,
   compareKey: '',
   bk: '',
   bkId: ''

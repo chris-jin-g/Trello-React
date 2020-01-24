@@ -80,7 +80,7 @@ export function* watchLogout() {
 export function* doGetThemeRequest() {
 	try {
 		// getTheme backend
-		const responsebody = yield call(api.getTheme);
+		const responsebody = yield api.getTheme();
 
 		if (responsebody.data.token === "undefined") {
 			throw new Error('Unable to find JWT in response body');

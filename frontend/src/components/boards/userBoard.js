@@ -40,7 +40,7 @@ class userBoard extends Component {
 
 	render() {
 		return (
-			<div onClick={this.changeWindowFlag}>
+			<div style={{backgroundColor: "#fafbfc"}} onClick={this.changeWindowFlag}>
 				<Navbar bk="rgb(0, 121, 191)" />
 				<BoardBody />
 				

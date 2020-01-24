@@ -1,0 +1,42 @@
+{"route":[
+  {
+        "title":"/templates/business"
+  },
+  {
+        "title":"/templates/design"
+  },
+   {
+        "title":"/templates/education"
+  },
+   {
+        "title":"/templates/engineering"
+  },
+   {
+        "title":"/templates/marketing"
+  },
+   {
+        "title":"/templates/operations-hr"
+  },
+   {
+        "title":"/templates/personal"
+  },
+  {
+        "title":"/templates/productivity"
+  },
+  {
+        "title":"/templates/product-management"
+  },
+  {
+        "title":"/templates/project-management"
+  },
+  {
+        "title":"/templates/sales"
+  },
+  {
+        "title":"/templates/support"
+  },
+  {
+        "title":"/templates/team-management"
+  }
+]
+}

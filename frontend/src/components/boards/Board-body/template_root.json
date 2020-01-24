@@ -1,39 +1,55 @@
 {"data":[
   {
-        "title":"Business"
+        "title":"Business",
+        "url":"business"
   },
   {
-        "title":"Design"
+        "title":"Design",
+        "url":"design"
   },
    {
-        "title":"Education"
+        "title":"Education",
+        "url":"education"
   },
    {
-        "title":"Engineering"
+        "title":"Engineering",
+        "url":"engineering"
   },
    {
-        "title":"Marketing"
+        "title":"Marketing",
+        "url":"marketing"
   },
    {
-        "title":"HR & Operations"
+        "title":"HR & Operations",
+        "url":"operations-hr"
   },
    {
-        "title":"Personal"
+        "title":"Personal",
+        "url":"personal"
   },
   {
-        "title":"Productivity"
+        "title":"Productivity",
+        "url":"productivity"
   },
   {
-        "title":"Project Management"
+        "title":"Product Management",
+        "url":"product-management"
   },
   {
-        "title":"Sales"
+        "title":"Project Management",
+        "url":"project-management"
   },
   {
-        "title":"Support"
+        "title":"Sales",
+        "url":"sales"
   },
   {
-        "title":"Team Management"
+        "title":"Support",
+        "url":"support"
+  },
+  {
+        "title":"Team Management",
+        "url":"team-management"
   }
 ]
 }

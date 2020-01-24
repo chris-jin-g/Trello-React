@@ -6,6 +6,7 @@ button:hover {
 	margin-bottom: 4px;
 	display: block;
 	color: black;
+	
 }
 .Mdblink:focus {
 	outline: none !important;
@@ -14,7 +15,9 @@ button:hover {
 	background-color: #e4f0f6 !important;
 	color: #0079bf !important;
 }
-
+.Mdblink span {
+	background-color: transparent !important;
+}
 .board-title {
 	background-color: #97a0af;
 	background-size: cover;

@@ -33,6 +33,8 @@ class CommonBoard extends Component {
 
 	componentWillMount() {
 
+		console.log("BKCOLOR")
+		
 		// match board and board area
 		const boards = this.props.user.user.boards;
 		const boardArea = this.props.user.boardCollection.boards;
@@ -40,6 +42,8 @@ class CommonBoard extends Component {
 
 		console.log("CommomBoard")
 		console.log(boards)
+		console.log(compareKey)
+		console.log(boardArea)
 
 		boards.map((board, key) => {
 			if (board.boardid == compareKey) {
