@@ -13,12 +13,13 @@ import addlist from './addlist.reducer';
 import compareBoardId from './saveBoardId.reducer';
 import windowFlag from './windowFlag.reducer';
 import toggleFlag from './toggleFlag.reducer';
+import templateType from './templateType.reducer';
 
 
 const persistConfig = {
 	key: 'root',
 	storage,
-	whitelist: ['user', 'theme', 'compareBoardId']
+	whitelist: ['user', 'theme', 'compareBoardId', 'templateType']
 }
 
 
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
 	addlist,
 	compareBoardId,
 	windowFlag,
-	toggleFlag
+	toggleFlag,
+	templateType
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { MDBIcon } from 'mdbreact';
-import { MDBBtn, MDBModal, MDBModalFooter, MDBNavLink } from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalFooter, MDBNavLink, MDBIcon } from 'mdbreact';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createNewBoard, saveNewCreatedId } from '../../../../actions/user.action';

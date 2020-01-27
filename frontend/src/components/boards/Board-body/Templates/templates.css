@@ -5,6 +5,14 @@
 	padding-left: 64px;
 	padding-right: 24px; 
 }
+.common-template-board {
+	background: transparent;
+	margin-top: 40px;
+	width: 0 !important;
+flex: 1 1 100%;
+	padding-left: 64px;
+	padding-right: 24px;
+}
 .top-bar {
 	margin-top: 14px !important;
 	padding-right: 230px;
@@ -20,6 +28,12 @@
 	line-height: 20px;
 	font-weight: 400;
 	padding: unset !important;
+}
+.title-ul a:hover {
+	text-decoration: underline !important;
+}
+.title-ul a:hover .title-ul a::after {
+	text-decoration: none !important;
 }
 .title-ul {
 	padding-bottom: 32px !important;
@@ -116,7 +130,6 @@
 }
 .title-img {
 	background-image: url("https://a.trellocdn.com/prgb/dist/images/templates/category-sprite@2x.56e6839e477d82529dad.png");
-	background-position: -162px -756px;
 	background-size: 293px 1352px;
 	display: inline-block;
 	height: 48px;
@@ -150,7 +163,6 @@
 	padding: unset !important;
 }
 .link-card-img {
-	background-image: url("https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x480/1413714ba3ce3a062cacb0512a5d5880/photo-1475694867812-f82b8696d610.jpg");
 	background-size: cover;
 	background-position: center center;
 	height: 132px;
@@ -168,7 +180,6 @@
 	cursor: pointer;
 }
 .link-card-avatar {
-	background-image: url("https://trello-logos.s3.amazonaws.com/4a592184a5e8cf0a11cc64aaf24d8cc2/50.png");
 	height: 48px;
 	width: 48px;
 	line-height: 48px;
@@ -188,12 +199,13 @@
 	font-weight: 700;
 	margin-bottom: 0;
 }
-.link-card-title span {
+.template-auth {
 	font-size: 12px !important;
 	line-height: 20px;
 	color: #6b778c;
+	margin-bottom: 0;
 }
-.link-card-title p {
+.template-about {
 	color: black;
 	font-size: 12px !important;
 	overflow: hidden;
@@ -221,6 +233,101 @@
 	animation-duration: .3s;
 	opacity: 1;
 }
+.title-bar {
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 24px;
+	display: flex;
+}
+.common-title-img {
+	float: left;
+	height: 64px;
+	width: 64px;
+	line-height: 64px;
+	align-items: center;
+	background-color: #dfe1e6;
+	background-position: 50%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: inline-flex;
+}
+.common-title {
+	float: left;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 16px;
+}
+.common-title h1 {
+	color: #172b4d;
+	font-size: 24px !important;
+	font-weight: 600;
+	letter-spacing: -.01em;
+	line-height: 28px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.common-title span {
+	color: #172b4d;
+	font-size: 14px !important;
+	font-weight: 400;
+	line-height: 20px !important;
+}
+.common-title >:last-child {
+	margin-top: 5px;
+	font-size: 12px;
+	color: #5e6c84;
+	display: flex;
+}
+.common-tie-icon {
+	height: 20px;
+	font-size: 16px;
+	line-height: 20px;
+	width: 20px;
+}
+.common-title-link {
+	padding: unset !important;
+	font-size: 12px !important;
+	color: #172b4d;
+}
+.common-title-link:hover {
+	text-decoration: underline !important;
+}
+.common-detail {
+	margin-bottom: 52px;
+}
+.common-detail h1 {
+	color: #172b4d;
+	font-size: 20px !important;
+	font-weight: 600;
+	letter-spacing: -.008em;
+	line-height: 24px;
+	margin-bottom: 8px;
+	margin-top: 0;
+}
+.view-template-btn {
+	padding: 10px 18px !important;
+	white-space: nowrap;
+	border-radius: 3px;
+	cursor: pointer;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+	font-size: 14px !important;
+	font-weight: 400;
+	line-height: 20px;
+	outline: 0;
+	text-decoration: none;
+	background-color: #5aac44;
+	box-shadow: none;
+	border: none;
+	color: #fff;
+	display: table !important;
+}
+.common-detail p {
+	margin: 0 0 8px;
+	font-size: 14px !important;
+	line-height: 20px;
+	font-weight: 400;
+}
+
 
 
 @keyframes Opacity {

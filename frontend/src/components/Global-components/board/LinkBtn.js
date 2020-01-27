@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBIcon } from 'mdbreact';
 import { Link } from 'react-router-dom';
-import { toggleFlag } from '../../../actions/user.action';
+import { toggleFlag, saveTemplateType } from '../../../actions/user.action';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -13,7 +13,7 @@ class LinkBtn extends Component {
 	constructor(props) {
 		super(props);
 
-		this.changeColor = this.changeColor.bind(this);
+		this.toTemplate = this.toTemplate.bind(this);
 
 		this.state = {
 			clicked: false,
@@ -40,7 +40,7 @@ class LinkBtn extends Component {
 		}
 	}
 
-	changeColor() {
+	toTemplate() {
 		const data = {
 			compareKey: this.state.linkKey,
 			flag: true
@@ -48,6 +48,9 @@ class LinkBtn extends Component {
 
 		// Change button color
 		this.props.toggleFlag(data);
+
+		// save template Type
+		this.props.saveTemplateType(this.state.linkKey);
 	}
 
 	render() {
@@ -61,7 +64,7 @@ class LinkBtn extends Component {
 			<>
 				{
 					(this.state.clicked) ?
-						<Link onClick={this.changeColor} to={this.props.to} className="clicked-link Mdblink">
+						<Link onClick={this.toTemplate} to={this.props.to} className="clicked-link Mdblink">
 							{
 								this.props.fab?<MDBIcon fab icon={this.props.icon} style={IconStyle} />:
 									<MDBIcon icon={this.props.icon} style={IconStyle} />
@@ -72,7 +75,7 @@ class LinkBtn extends Component {
 							}
 						</Link>
 					:
-						<Link onClick={this.changeColor} to={this.props.to} className="Mdblink">
+						<Link onClick={this.toTemplate} to={this.props.to} className="Mdblink">
 							{
 								this.props.fab?<MDBIcon fab icon={this.props.icon} style={IconStyle} />:
 									<MDBIcon icon={this.props.icon} style={IconStyle} />
@@ -92,7 +95,8 @@ class LinkBtn extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    toggleFlag
+    toggleFlag,
+    saveTemplateType
   }, dispatch);
 }
 

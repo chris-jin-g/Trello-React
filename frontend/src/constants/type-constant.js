@@ -22,3 +22,5 @@ export const SET_COLOR = "SET_COLOR";
 export const CREATE_NEW_BOARD = "CREATE_NEW_BOARD";
 export const SAVE_CREATED_ID = "SAVE_CREATED_ID";
 export const SAVE_TOP_ID = "SAVE_TOP_ID";
+export const SAVE_TEMPLATE_TYPE = "SAVE_TEMPLATE_TYPE";
+export const SAVE_TEMPLATE_AUTH = "SAVE_TEMPLATE_AUTH";

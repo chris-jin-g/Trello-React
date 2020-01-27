@@ -137,3 +137,17 @@ export function saveSearchTopId(id) {
 		payload: id
 	}
 }
+
+export function saveTemplateType(type) {
+	return {
+		type: types.SAVE_TEMPLATE_TYPE,
+		payload: type
+	}
+}
+
+export function saveTemplateAuth(data) {
+	return {
+		type: types.SAVE_TEMPLATE_AUTH,
+		payload: data
+	}
+}

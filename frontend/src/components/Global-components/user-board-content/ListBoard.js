@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { MDBLink, MDBIcon } from 'mdbreact';
-import { isEmpty } from "is-empty";
 
 
 // Import css and components for it

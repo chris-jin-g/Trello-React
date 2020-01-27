@@ -9,9 +9,9 @@ class HeaderBar extends Component {
 	render() {
 		return (
 			<div className="template-header">
-				<div className="title-img"></div>
+				<div className="title-img" style={{backgroundPosition: `${this.props.templateImgPosition}`}}></div>
 				<h1>
-					Business Templates
+					{this.props.type}&nbsp;Templates
 				</h1>
 			</div>
 		);
