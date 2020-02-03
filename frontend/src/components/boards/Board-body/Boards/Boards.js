@@ -379,7 +379,7 @@ class Boards extends Component {
 								</button>
 							</li>
 						</ul>
-				</div>
+					</div>
 				    <MDBModalFooter className="board-modal-footer">
 					    {
 					    	this.state.visible?

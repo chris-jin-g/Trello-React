@@ -61,9 +61,6 @@ export default function(state = initialState, action) {
         ...state
       }
     case types.CREATE_NEW_BOARD:
-      console.log("CREATE_NEW_BOARD")
-      console.log(action.payload)
-      console.log(user)
       const regex = /^http/;
       let newBoardId = '';
       let newThemeTitle = '';
